@@ -1,0 +1,13 @@
+regime,institute_year,n_rows,mean_normalized_calendar_mae
+disjoint_refit,INS-W_1,9512,1.0928144313078159
+disjoint_refit,INS-W_2,14930,0.9864574525048391
+disjoint_refit,INS-W_3,12056,1.009717493461462
+disjoint_refit,INS-W_4,17608,0.95469021253586
+expanding_refit,INS-W_1,10678,1.0494578259793617
+expanding_refit,INS-W_2,16737,1.0097758715405194
+expanding_refit,INS-W_3,13780,0.9907947427901105
+expanding_refit,INS-W_4,20279,0.9721445345712796
+fixed_refit,INS-W_1,10678,1.0533270306490645
+fixed_refit,INS-W_2,16737,1.0144078624276807
+fixed_refit,INS-W_3,13780,0.9836341482099545
+fixed_refit,INS-W_4,20279,0.9711500079364875

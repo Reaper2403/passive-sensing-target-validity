@@ -1,0 +1,398 @@
+{
+  "status": "post_hoc_exploratory",
+  "contract": "experiments/README.md",
+  "entropy_boundary": "Sequence metrics are discretized descriptive proxies, not a Song-style continuous-behaviour predictability ceiling.",
+  "source_rows": 168799,
+  "family_decisions": {
+    "lag1_history": false,
+    "short_window_history": true,
+    "recent_history": true,
+    "long_horizon_fingerprint": true,
+    "combined_own_history": true,
+    "cross_domain_history": true,
+    "cross_domain_increment": false
+  },
+  "cross_domain_gate_passed": false,
+  "cross_domain_performance": [
+    {
+      "regime": "disjoint_refit",
+      "mean_relative_gain": -0.004160834244780795,
+      "positive_targets": 2
+    },
+    {
+      "regime": "expanding_refit",
+      "mean_relative_gain": -0.004403408801892314,
+      "positive_targets": 4
+    },
+    {
+      "regime": "fixed_refit",
+      "mean_relative_gain": -0.004711347392819962,
+      "positive_targets": 4
+    }
+  ],
+  "permutation_counts": {
+    "headline_profiles": 10000,
+    "secondary_feature_profiles": 500
+  },
+  "training_moment_adjusted_stability": [
+    {
+      "regime": "disjoint_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 499,
+      "pearson_r": 0.14181419580530175,
+      "ci_low": 0.050142436746001655,
+      "ci_high": 0.22779438065951166
+    },
+    {
+      "regime": "disjoint_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 499,
+      "pearson_r": 0.32227872549010256,
+      "ci_low": 0.22683803778164693,
+      "ci_high": 0.4277207559747687
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 521,
+      "pearson_r": 0.20916923352673925,
+      "ci_low": 0.10750248846007833,
+      "ci_high": 0.29617202231134715
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 521,
+      "pearson_r": 0.26267392094157566,
+      "ci_low": 0.17566698529747687,
+      "ci_high": 0.3441291584874191
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 521,
+      "pearson_r": 0.3145649820303741,
+      "ci_low": 0.21222473206324852,
+      "ci_high": 0.4089424954317553
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 521,
+      "pearson_r": 0.32262543387985243,
+      "ci_low": 0.23841541384807294,
+      "ci_high": 0.40914778107461214
+    }
+  ],
+  "training_moment_adjusted_profiles": [
+    {
+      "regime": "disjoint_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 499,
+      "same_person_mean": 0.18738473964059818,
+      "matched_cross_person_mean": 0.03455473092086627,
+      "delta": 0.1528300087197319,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "disjoint_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 499,
+      "same_person_mean": 0.2186857132742035,
+      "matched_cross_person_mean": 0.0016991258305161772,
+      "delta": 0.21698658744368732,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 521,
+      "same_person_mean": 0.18783447664703354,
+      "matched_cross_person_mean": 0.037989670352518504,
+      "delta": 0.14984480629451502,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 521,
+      "same_person_mean": 0.3132892650644229,
+      "matched_cross_person_mean": 0.0025154387234714083,
+      "delta": 0.31077382634095146,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "forecastability_training_adjusted",
+      "n_trajectories": 521,
+      "same_person_mean": 0.25840565736171506,
+      "matched_cross_person_mean": 0.03907774412536996,
+      "delta": 0.2193279132363451,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "combined_skill_training_adjusted",
+      "n_trajectories": 521,
+      "same_person_mean": 0.3565502249576447,
+      "matched_cross_person_mean": 0.0024082242820484957,
+      "delta": 0.3541420006755962,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    }
+  ],
+  "training_moment_profile_gate_passed_all_regimes": true,
+  "window_coverage_diagnostics": [
+    {
+      "regime": "disjoint_refit",
+      "half": "early",
+      "n_target_halves": 4534,
+      "median_test_obs": 6.0,
+      "mean_test_obs": 5.479047198941332,
+      "median_observed_sd": 0.2040801804441698,
+      "mean_marginal_entropy": 0.5468180908097647
+    },
+    {
+      "regime": "disjoint_refit",
+      "half": "late",
+      "n_target_halves": 4673,
+      "median_test_obs": 6.0,
+      "mean_test_obs": 5.640273913973893,
+      "median_observed_sd": 0.2877604009576457,
+      "mean_marginal_entropy": 0.5921827390417141
+    },
+    {
+      "regime": "expanding_refit",
+      "half": "early",
+      "n_target_halves": 4829,
+      "median_test_obs": 7.0,
+      "mean_test_obs": 6.450610892524332,
+      "median_observed_sd": 0.2129219385364928,
+      "mean_marginal_entropy": 0.5812747690419049
+    },
+    {
+      "regime": "expanding_refit",
+      "half": "late",
+      "n_target_halves": 4673,
+      "median_test_obs": 6.0,
+      "mean_test_obs": 6.034881232612882,
+      "median_observed_sd": 0.2943121124149834,
+      "mean_marginal_entropy": 0.6045796181528418
+    },
+    {
+      "regime": "fixed_refit",
+      "half": "early",
+      "n_target_halves": 4829,
+      "median_test_obs": 7.0,
+      "mean_test_obs": 6.450610892524332,
+      "median_observed_sd": 0.2129219385364928,
+      "mean_marginal_entropy": 0.5812747690419049
+    },
+    {
+      "regime": "fixed_refit",
+      "half": "late",
+      "n_target_halves": 4673,
+      "median_test_obs": 6.0,
+      "mean_test_obs": 6.034881232612882,
+      "median_observed_sd": 0.2943121124149834,
+      "mean_marginal_entropy": 0.6045796181528418
+    }
+  ],
+  "calendar_cohort_diagnostics": [
+    {
+      "regime": "disjoint_refit",
+      "institute_year": "INS-W_1",
+      "n_rows": 9512,
+      "mean_normalized_calendar_mae": 1.0928144313078159
+    },
+    {
+      "regime": "disjoint_refit",
+      "institute_year": "INS-W_2",
+      "n_rows": 14930,
+      "mean_normalized_calendar_mae": 0.9864574525048391
+    },
+    {
+      "regime": "disjoint_refit",
+      "institute_year": "INS-W_3",
+      "n_rows": 12056,
+      "mean_normalized_calendar_mae": 1.009717493461462
+    },
+    {
+      "regime": "disjoint_refit",
+      "institute_year": "INS-W_4",
+      "n_rows": 17608,
+      "mean_normalized_calendar_mae": 0.95469021253586
+    },
+    {
+      "regime": "expanding_refit",
+      "institute_year": "INS-W_1",
+      "n_rows": 10678,
+      "mean_normalized_calendar_mae": 1.0494578259793617
+    },
+    {
+      "regime": "expanding_refit",
+      "institute_year": "INS-W_2",
+      "n_rows": 16737,
+      "mean_normalized_calendar_mae": 1.0097758715405194
+    },
+    {
+      "regime": "expanding_refit",
+      "institute_year": "INS-W_3",
+      "n_rows": 13780,
+      "mean_normalized_calendar_mae": 0.9907947427901105
+    },
+    {
+      "regime": "expanding_refit",
+      "institute_year": "INS-W_4",
+      "n_rows": 20279,
+      "mean_normalized_calendar_mae": 0.9721445345712796
+    },
+    {
+      "regime": "fixed_refit",
+      "institute_year": "INS-W_1",
+      "n_rows": 10678,
+      "mean_normalized_calendar_mae": 1.0533270306490645
+    },
+    {
+      "regime": "fixed_refit",
+      "institute_year": "INS-W_2",
+      "n_rows": 16737,
+      "mean_normalized_calendar_mae": 1.0144078624276807
+    },
+    {
+      "regime": "fixed_refit",
+      "institute_year": "INS-W_3",
+      "n_rows": 13780,
+      "mean_normalized_calendar_mae": 0.9836341482099545
+    },
+    {
+      "regime": "fixed_refit",
+      "institute_year": "INS-W_4",
+      "n_rows": 20279,
+      "mean_normalized_calendar_mae": 0.9711500079364875
+    }
+  ],
+  "sequence_sample": {
+    "n_trajectories": 5442,
+    "median_days": 68.0,
+    "median_transitions": 64.0,
+    "median_longest_run": 51.0
+  },
+  "sequence_adjusted_stability": [
+    {
+      "regime": "disjoint_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 498,
+      "pearson_r": 0.2218307384941114,
+      "ci_low": 0.1307386865282063,
+      "ci_high": 0.3135280394178931
+    },
+    {
+      "regime": "disjoint_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 498,
+      "pearson_r": 0.24569679478036252,
+      "ci_low": 0.1486004531653137,
+      "ci_high": 0.34589607142043965
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 519,
+      "pearson_r": 0.22492292578549425,
+      "ci_low": 0.08406010771111631,
+      "ci_high": 0.36783342987221823
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 519,
+      "pearson_r": 0.21854071884303825,
+      "ci_low": 0.13146077781441726,
+      "ci_high": 0.3136402405721511
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 519,
+      "pearson_r": 0.22638428402104693,
+      "ci_low": 0.09400033299446785,
+      "ci_high": 0.3647192779378827
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 519,
+      "pearson_r": 0.24024342395814163,
+      "ci_low": 0.14095776203707647,
+      "ci_high": 0.33766623630330367
+    }
+  ],
+  "sequence_adjusted_profiles": [
+    {
+      "regime": "disjoint_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 425,
+      "same_person_mean": 0.2296364776460172,
+      "matched_cross_person_mean": 0.019931132216576858,
+      "delta": 0.20970534542944033,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "disjoint_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 425,
+      "same_person_mean": 0.20656219380759258,
+      "matched_cross_person_mean": 0.004259132770478642,
+      "delta": 0.20230306103711393,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 439,
+      "same_person_mean": 0.21964505159803172,
+      "matched_cross_person_mean": 0.015541086426258493,
+      "delta": 0.20410396517177323,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "expanding_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 439,
+      "same_person_mean": 0.31463426804090755,
+      "matched_cross_person_mean": 0.0066170547118156705,
+      "delta": 0.3080172133290919,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "forecastability_sequence_adjusted",
+      "n_trajectories": 439,
+      "same_person_mean": 0.22159670691598948,
+      "matched_cross_person_mean": 0.015261728325061825,
+      "delta": 0.20633497859092767,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "fixed_refit",
+      "measure": "combined_skill_sequence_adjusted",
+      "n_trajectories": 439,
+      "same_person_mean": 0.32085485246241485,
+      "matched_cross_person_mean": 0.006488024348179573,
+      "delta": 0.3143668281142353,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    }
+  ]
+}

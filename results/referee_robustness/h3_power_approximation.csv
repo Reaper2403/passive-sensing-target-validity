@@ -1,0 +1,7 @@
+correction,comparisons,n,target_power,approximate_minimum_detectable_abs_r,note
+uncorrected,1,521,0.8,0.12247661164233731,Fisher-z approximation; max-statistic permutation may differ
+uncorrected,1,521,0.9,0.1414687618773274,Fisher-z approximation; max-statistic permutation may differ
+three_trait_bonferroni,3,521,0.8,0.1412140844399184,Fisher-z approximation; max-statistic permutation may differ
+three_trait_bonferroni,3,521,0.9,0.16010414267028858,Fisher-z approximation; max-statistic permutation may differ
+full_28_test_bonferroni_approximation,28,521,0.8,0.17248596789216591,Fisher-z approximation; max-statistic permutation may differ
+full_28_test_bonferroni_approximation,28,521,0.9,0.19117567907814756,Fisher-z approximation; max-statistic permutation may differ

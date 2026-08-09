@@ -1,0 +1,7 @@
+component_a,component_b,n,pearson_r
+baseline_depression,baseline_anxiety,592,0.7528920558047717
+baseline_depression,baseline_stress,594,0.681886364730638
+baseline_depression,baseline_loneliness,592,0.512584043547473
+baseline_anxiety,baseline_stress,592,0.7381551766042849
+baseline_anxiety,baseline_loneliness,590,0.5704033887607753
+baseline_stress,baseline_loneliness,592,0.4491989280444688

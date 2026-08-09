@@ -1,0 +1,123 @@
+{
+  "status": "post_hoc_exploratory",
+  "contract": "experiments/README.md",
+  "supported_typology": false,
+  "supported_k": [],
+  "descriptive_k": 3,
+  "decision": "No k passes the cross-cohort typology gate; retain continuous profiles.",
+  "validation": [
+    {
+      "regime": "fixed_original",
+      "k": 2,
+      "median_adjusted_rand_index": 0.06093127390667781,
+      "median_assignment_accuracy": 0.628210209258085,
+      "median_silhouette": 0.27979821042728453,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.39759036144578314
+    },
+    {
+      "regime": "fixed_original",
+      "k": 3,
+      "median_adjusted_rand_index": 0.0657315143648102,
+      "median_assignment_accuracy": 0.5143756845564074,
+      "median_silhouette": 0.25823101964852657,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.2159090909090909
+    },
+    {
+      "regime": "fixed_original",
+      "k": 4,
+      "median_adjusted_rand_index": 0.04738012885200657,
+      "median_assignment_accuracy": 0.41183865898376115,
+      "median_silhouette": 0.2531235254195132,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.125
+    },
+    {
+      "regime": "fixed_original",
+      "k": 5,
+      "median_adjusted_rand_index": 0.03368732457698835,
+      "median_assignment_accuracy": 0.32985890932149653,
+      "median_silhouette": 0.2437264572070097,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.125
+    },
+    {
+      "regime": "disjoint_refit",
+      "k": 2,
+      "median_adjusted_rand_index": 0.05683362787395671,
+      "median_assignment_accuracy": 0.6180517336268574,
+      "median_silhouette": 0.3153209241567022,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.37142857142857144
+    },
+    {
+      "regime": "disjoint_refit",
+      "k": 3,
+      "median_adjusted_rand_index": 0.028163562734201487,
+      "median_assignment_accuracy": 0.4403726708074534,
+      "median_silhouette": 0.24907895118972118,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.22142857142857142
+    },
+    {
+      "regime": "disjoint_refit",
+      "k": 4,
+      "median_adjusted_rand_index": 0.038893551311092726,
+      "median_assignment_accuracy": 0.38649068322981367,
+      "median_silhouette": 0.2260298638127054,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.16455696202531644
+    },
+    {
+      "regime": "disjoint_refit",
+      "k": 5,
+      "median_adjusted_rand_index": 0.050610078835610625,
+      "median_assignment_accuracy": 0.3080368906455863,
+      "median_silhouette": 0.24066878471396588,
+      "successful_cohorts": 0,
+      "minimum_prevalence_across_folds": 0.1
+    }
+  ],
+  "descriptive_centroids": [
+    {
+      "cluster": 0,
+      "screen_unlock_count": 0.3273430381492552,
+      "screen_unlock_duration": 0.037255514349758476,
+      "steps_sum": -0.3602709739284298,
+      "active_duration": -0.4979203073361063,
+      "sedentary_duration": -0.38999871353572185,
+      "sleep_duration": 0.428031451703578,
+      "sleep_in_bed": 0.4132117648802136,
+      "sleep_efficiency": 0.0876634021146617,
+      "top_positive_domain": "sleep_duration",
+      "top_negative_domain": "active_duration"
+    },
+    {
+      "cluster": 1,
+      "screen_unlock_count": -0.3129548057531913,
+      "screen_unlock_duration": -0.17346881560057492,
+      "steps_sum": -0.055108087115782266,
+      "active_duration": -0.06940100706986597,
+      "sedentary_duration": 0.0010322601144095507,
+      "sleep_duration": -0.6710920668961295,
+      "sleep_in_bed": -0.6432248264730289,
+      "sleep_efficiency": 0.0032639422670850443,
+      "top_positive_domain": "sleep_efficiency",
+      "top_negative_domain": "sleep_duration"
+    },
+    {
+      "cluster": 2,
+      "screen_unlock_count": 0.06827380101093312,
+      "screen_unlock_duration": 0.2600338747296448,
+      "steps_sum": 0.5113101728648158,
+      "active_duration": 0.5905363327580304,
+      "sedentary_duration": 0.4604155920033598,
+      "sleep_duration": 0.23211052900565285,
+      "sleep_in_bed": 0.2263818165422331,
+      "sleep_efficiency": 0.021054144727491123,
+      "top_positive_domain": "active_duration",
+      "top_negative_domain": "sleep_efficiency"
+    }
+  ]
+}

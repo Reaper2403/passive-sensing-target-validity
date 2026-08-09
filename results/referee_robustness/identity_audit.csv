@@ -1,0 +1,3 @@
+sample,n_trajectory_keys,n_unique_released_user_ids,n_released_ids_in_multiple_cohorts,maximum_cohorts_per_released_id,n_known_repeat_candidate_trajectories,n_known_single_year_trajectories,linked_cross_year_person_id_available,cluster_bootstrap_status
+source,696,696,0,1,342,354,False,not identifiable from released PIDs; use known-single-year sensitivity
+core_eligible,521,521,0,1,289,232,False,not identifiable from released PIDs; use known-single-year sensitivity

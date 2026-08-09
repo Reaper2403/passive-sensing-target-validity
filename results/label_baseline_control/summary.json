@@ -1,0 +1,76 @@
+{
+  "contract": {
+    "question": "How much of the Chapter 3 history advantage remains after controlling for within-user prior dep_weekly rate?",
+    "label_baseline_feature": "prior_dep_weekly_rate",
+    "train_rows": "expanding prior user label rate; fallback to train global rate if no prior label",
+    "test_rows": "user train-period label rate; fallback to train global rate if unavailable"
+  },
+  "global_fallback": 0.4540571647803568,
+  "metrics": [
+    {
+      "model_name": "random_forest",
+      "feature_set": "allday_raw",
+      "n_features": 98,
+      "n_train": 5213,
+      "n_test": 2927,
+      "n_train_users": 697,
+      "n_test_users": 697,
+      "macro_f1": 0.5571789834849981,
+      "balanced_accuracy": 0.5571686927388941,
+      "accuracy": 0.5582507687051589,
+      "auroc": 0.5785694900661632
+    },
+    {
+      "model_name": "random_forest",
+      "feature_set": "allday_raw_plus_prior_label_rate",
+      "n_features": 99,
+      "n_train": 5213,
+      "n_test": 2927,
+      "n_train_users": 697,
+      "n_test_users": 697,
+      "macro_f1": 0.784168985439265,
+      "balanced_accuracy": 0.7845405541986019,
+      "accuracy": 0.7844209087803211,
+      "auroc": 0.8403424670353838
+    },
+    {
+      "model_name": "random_forest",
+      "feature_set": "history_raw",
+      "n_features": 196,
+      "n_train": 5213,
+      "n_test": 2927,
+      "n_train_users": 697,
+      "n_test_users": 697,
+      "macro_f1": 0.6397041168023425,
+      "balanced_accuracy": 0.6424150968116267,
+      "accuracy": 0.6399043389135634,
+      "auroc": 0.6908576415209111
+    },
+    {
+      "model_name": "random_forest",
+      "feature_set": "history_raw_plus_prior_label_rate",
+      "n_features": 197,
+      "n_train": 5213,
+      "n_test": 2927,
+      "n_train_users": 697,
+      "n_test_users": 697,
+      "macro_f1": 0.7884317684504029,
+      "balanced_accuracy": 0.7892903600138503,
+      "accuracy": 0.788520669627605,
+      "auroc": 0.8413784309872072
+    },
+    {
+      "model_name": "random_forest",
+      "feature_set": "prior_label_rate_only",
+      "n_features": 1,
+      "n_train": 5213,
+      "n_test": 2927,
+      "n_train_users": 697,
+      "n_test_users": 697,
+      "macro_f1": 0.7809503394720014,
+      "balanced_accuracy": 0.7819819946283351,
+      "accuracy": 0.7810044414075845,
+      "auroc": 0.8444280674172024
+    }
+  ]
+}

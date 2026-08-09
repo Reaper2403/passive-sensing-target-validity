@@ -1,0 +1,18 @@
+run:
+  name: local_smoke
+  seed: 42
+  smoke_test: true
+
+paths:
+  globem_raw: data/raw/globem/1.1
+  processed: data/processed
+  results: results
+
+data:
+  institute_years:
+    - INS-W_1
+  min_days_per_user: 5
+  history_days: 14
+
+model:
+  name: baseline_random_forest

@@ -1,0 +1,9 @@
+institute_year,predictor,n,partial_r
+INS-W_1,core_forecastability,88,-0.0412025630581718
+INS-W_1,core_history_skill,88,-0.04974918142213476
+INS-W_2,core_forecastability,152,-0.24916787327129197
+INS-W_2,core_history_skill,152,-0.28253642481415536
+INS-W_3,core_forecastability,112,-0.2239315011437927
+INS-W_3,core_history_skill,112,-0.2222675462638217
+INS-W_4,core_forecastability,166,-0.09668832252283352
+INS-W_4,core_history_skill,166,-0.09155744003822029

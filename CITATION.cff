@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code or report, please cite this repository and GLOBEM v1.1."
+title: "Passive Sensing Target Validation and Behavioral Forecasting in GLOBEM"
+type: software
+authors:
+  - family-names: Chatterjee
+    given-names: Ashutosh
+repository-code: "https://github.com/Reaper2403/passive-sensing-target-validity"
+url: "https://github.com/Reaper2403/passive-sensing-target-validity"
+version: "1.0.0"
+date-released: 2026-08-09
+license: MIT

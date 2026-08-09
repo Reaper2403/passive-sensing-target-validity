@@ -1,0 +1,14 @@
+{
+  "canonical_daily_path": "data/processed/globem_daily_amber_compatible.parquet",
+  "rows": 69627,
+  "columns": 2660,
+  "users": 705,
+  "institute_years": [
+    "INS-W_1",
+    "INS-W_2",
+    "INS-W_3",
+    "INS-W_4"
+  ],
+  "labelled_rows": 8150,
+  "feature_columns": 2646
+}

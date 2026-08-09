@@ -1,0 +1,190 @@
+{
+  "n_construct_pairs": 45,
+  "median_same_day_abs_r": 0.6628291199453776,
+  "top_same_day_pairs": [
+    {
+      "target_a": "phq4",
+      "target_b": "phq4_EMA",
+      "n_overlap": 5223,
+      "pearson_r": 0.9999526801403815,
+      "abs_r": 0.9999526801403815
+    },
+    {
+      "target_a": "phq4",
+      "target_b": "phq4_anxiety_EMA",
+      "n_overlap": 5223,
+      "pearson_r": 0.9147038783271023,
+      "abs_r": 0.9147038783271023
+    },
+    {
+      "target_a": "phq4_EMA",
+      "target_b": "phq4_anxiety_EMA",
+      "n_overlap": 5923,
+      "pearson_r": 0.9146274508413371,
+      "abs_r": 0.9146274508413371
+    },
+    {
+      "target_a": "phq4",
+      "target_b": "phq4_depression_EMA",
+      "n_overlap": 5223,
+      "pearson_r": 0.9089751001575814,
+      "abs_r": 0.9089751001575814
+    },
+    {
+      "target_a": "phq4_EMA",
+      "target_b": "phq4_depression_EMA",
+      "n_overlap": 5923,
+      "pearson_r": 0.9089679754738997,
+      "abs_r": 0.9089679754738997
+    },
+    {
+      "target_a": "feel_depressed",
+      "target_b": "negative_affect_EMA",
+      "n_overlap": 2221,
+      "pearson_r": 0.8333077082993768,
+      "abs_r": 0.8333077082993768
+    },
+    {
+      "target_a": "feel_anxious",
+      "target_b": "negative_affect_EMA",
+      "n_overlap": 2221,
+      "pearson_r": 0.8243118764034718,
+      "abs_r": 0.8243118764034718
+    },
+    {
+      "target_a": "target_dep_weekly",
+      "target_b": "phq4",
+      "n_overlap": 5249,
+      "pearson_r": 0.7930693993733825,
+      "abs_r": 0.7930693993733825
+    },
+    {
+      "target_a": "target_dep_weekly",
+      "target_b": "phq4_EMA",
+      "n_overlap": 5241,
+      "pearson_r": 0.7918575611211524,
+      "abs_r": 0.7918575611211524
+    },
+    {
+      "target_a": "target_dep_weekly",
+      "target_b": "feel_depressed",
+      "n_overlap": 2221,
+      "pearson_r": 0.753315218456917,
+      "abs_r": 0.753315218456917
+    },
+    {
+      "target_a": "target_dep_weekly",
+      "target_b": "phq4_anxiety_EMA",
+      "n_overlap": 5242,
+      "pearson_r": 0.7226580723846092,
+      "abs_r": 0.7226580723846092
+    },
+    {
+      "target_a": "target_dep_weekly",
+      "target_b": "phq4_depression_EMA",
+      "n_overlap": 5242,
+      "pearson_r": 0.7204608375433582,
+      "abs_r": 0.7204608375433582
+    }
+  ],
+  "n_temporal_targets": 10,
+  "mean_own_prior_r2": 0.47931512812547006,
+  "mean_other_construct_prior_r2": 0.425902604886195,
+  "mean_lift_other_added_to_own": 0.043928107163825794,
+  "temporal_summary": [
+    {
+      "target": "feel_anxious",
+      "other_construct_priors": 0.37601566510832796,
+      "own_plus_other_priors": 0.4003072843871036,
+      "own_prior_only": 0.32918113473732824,
+      "lift_other_over_own": 0.046834530370999716,
+      "lift_other_added_to_own": 0.07112614964977537
+    },
+    {
+      "target": "feel_depressed",
+      "other_construct_priors": 0.4235343080162951,
+      "own_plus_other_priors": 0.4653860988981253,
+      "own_prior_only": 0.43409921190748246,
+      "lift_other_over_own": -0.01056490389118736,
+      "lift_other_added_to_own": 0.03128688699064286
+    },
+    {
+      "target": "negative_affect_EMA",
+      "other_construct_priors": 0.3332063586823707,
+      "own_plus_other_priors": 0.5001137435544987,
+      "own_prior_only": 0.45971472823962745,
+      "lift_other_over_own": -0.12650836955725675,
+      "lift_other_added_to_own": 0.04039901531487122
+    },
+    {
+      "target": "phq4",
+      "other_construct_priors": 0.6232252143489816,
+      "own_plus_other_priors": 0.6234541666697903,
+      "own_prior_only": 0.5741360673257307,
+      "lift_other_over_own": 0.049089147023250845,
+      "lift_other_added_to_own": 0.04931809934405951
+    },
+    {
+      "target": "phq4_EMA",
+      "other_construct_priors": 0.6263073422735037,
+      "own_plus_other_priors": 0.6263919306140011,
+      "own_prior_only": 0.5785975701623617,
+      "lift_other_over_own": 0.047709772111142024,
+      "lift_other_added_to_own": 0.04779436045163943
+    },
+    {
+      "target": "phq4_anxiety_EMA",
+      "other_construct_priors": 0.541293153458072,
+      "own_plus_other_priors": 0.5405807757729026,
+      "own_prior_only": 0.4775442086979309,
+      "lift_other_over_own": 0.06374894476014115,
+      "lift_other_added_to_own": 0.06303656707497174
+    },
+    {
+      "target": "phq4_depression_EMA",
+      "other_construct_priors": 0.5804002430241422,
+      "own_plus_other_priors": 0.5807213185489547,
+      "own_prior_only": 0.5356630687227748,
+      "lift_other_over_own": 0.044737174301367366,
+      "lift_other_added_to_own": 0.0450582498261799
+    },
+    {
+      "target": "positive_affect_EMA",
+      "other_construct_priors": 0.069316940460599,
+      "own_plus_other_priors": 0.5492180892055035,
+      "own_prior_only": 0.5443710311661031,
+      "lift_other_over_own": -0.4750540907055041,
+      "lift_other_added_to_own": 0.0048470580394004426
+    },
+    {
+      "target": "pss4_EMA",
+      "other_construct_priors": 0.3535052373932883,
+      "own_plus_other_priors": 0.5742032170552324,
+      "own_prior_only": 0.5462523527177878,
+      "lift_other_over_own": -0.1927471153244995,
+      "lift_other_added_to_own": 0.027950864337444536
+    },
+    {
+      "target": "target_dep_weekly",
+      "other_construct_priors": 0.33222158609637,
+      "own_plus_other_priors": 0.3720557281868463,
+      "own_prior_only": 0.3135919075775734,
+      "lift_other_over_own": 0.0186296785187966,
+      "lift_other_added_to_own": 0.05846382060927291
+    }
+  ],
+  "targets": [
+    "target_dep_weekly",
+    "feel_depressed",
+    "feel_anxious",
+    "phq4",
+    "phq4_EMA",
+    "phq4_anxiety_EMA",
+    "phq4_depression_EMA",
+    "pss4_EMA",
+    "positive_affect_EMA",
+    "negative_affect_EMA"
+  ],
+  "n_rows_with_any_label": 17346,
+  "contract": "post-hoc skeptical construct-fragility audit"
+}

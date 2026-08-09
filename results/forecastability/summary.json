@@ -1,0 +1,42 @@
+{
+  "contract": "experiments/README.md",
+  "source_predictions": "results/behavioural_weather_forecast/predictions.parquet",
+  "n_prediction_rows_input": 120936,
+  "n_users_input": 696,
+  "n_users_with_person_score": 598,
+  "n_targets": 16,
+  "h1_stable_degree": {
+    "passed": true,
+    "test": "composite_split_half",
+    "scope": "core",
+    "measure": "forecastability",
+    "n_users": 521,
+    "pearson_r": 0.4124985453626814,
+    "bootstrap_ci_low": 0.31594802344757117,
+    "bootstrap_ci_high": 0.5010843302276144
+  },
+  "h2_stable_profile": {
+    "passed": true,
+    "test": "profile_cosine",
+    "scope": "core",
+    "measure": "forecastability_raw_z",
+    "n_users": 521,
+    "same_user_mean": 0.34953662936169755,
+    "matched_cross_user_mean": 0.06217923759396876,
+    "delta": 0.2873573917677288,
+    "permutation_p": 0.001996007984031936
+  },
+  "h3_corrected_trait_associations": {
+    "passed": false,
+    "n": 0,
+    "rows": []
+  },
+  "decision_scope": "historical_e27_contract_gates",
+  "historical_contract_decision": "stable_forecastability_phenotype_supported",
+  "historical_contract_novelty_gate_passed": true,
+  "current_interpretation_document": "experiments/README.md",
+  "figures": [
+    "results/forecastability/core_forecastability_stability.png",
+    "results/forecastability/core_forecastability_trait_associations.png"
+  ]
+}

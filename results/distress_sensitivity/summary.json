@@ -1,0 +1,262 @@
+{
+  "contract": "experiments/README.md",
+  "status": "post_hoc_validation",
+  "n_users": 594,
+  "h1_common_factor": {
+    "passed": true,
+    "cronbach_alpha": 0.8655132716293643,
+    "median_component_r": 0.6261448767457067
+  },
+  "h2_controlled_association": {
+    "passed": true,
+    "predictor": "core_forecastability",
+    "n": 518,
+    "partial_r": -0.17836110179110934,
+    "bootstrap_ci_low": -0.2406460147196794,
+    "bootstrap_ci_high": -0.10323726179067493,
+    "max_stat_permutation_p": 0.000999000999000999
+  },
+  "h3_internal_generalization": {
+    "passed": true,
+    "same_negative_direction_cohorts": 4,
+    "n_cohorts": 4,
+    "median_holdout_delta_r2": 0.028527791045994122,
+    "positive_holdout_rate": 0.83,
+    "n_holdout_repetitions": 200
+  },
+  "direct_variability_sensitivity": {
+    "control_definition": "Eight target-specific SDs averaged over test halves; direct controls are median-imputed within the regression design.",
+    "associations": [
+      {
+        "control_set": "direct_core_sd",
+        "predictor": "core_forecastability",
+        "n": 518,
+        "partial_r": -0.1400565666429912,
+        "bootstrap_ci_low": -0.22155687408490124,
+        "bootstrap_ci_high": -0.04987096465119815,
+        "max_stat_permutation_p": 0.004995004995004995
+      },
+      {
+        "control_set": "direct_core_sd",
+        "predictor": "core_history_skill",
+        "n": 518,
+        "partial_r": -0.16043011693802628,
+        "bootstrap_ci_low": -0.23490005460264654,
+        "bootstrap_ci_high": -0.07904318106568606,
+        "max_stat_permutation_p": 0.000999000999000999
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "predictor": "core_forecastability",
+        "n": 518,
+        "partial_r": -0.16203525152453793,
+        "bootstrap_ci_low": -0.2474867822926638,
+        "bootstrap_ci_high": -0.0732974959076478,
+        "max_stat_permutation_p": 0.000999000999000999
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "predictor": "core_history_skill",
+        "n": 518,
+        "partial_r": -0.18441211531627355,
+        "bootstrap_ci_low": -0.2709353699636852,
+        "bootstrap_ci_high": -0.10158868694811936,
+        "max_stat_permutation_p": 0.000999000999000999
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "predictor": "core_forecastability",
+        "n": 518,
+        "partial_r": -0.1494441336322914,
+        "bootstrap_ci_low": -0.23128998864283198,
+        "bootstrap_ci_high": -0.04954863772751002,
+        "max_stat_permutation_p": 0.000999000999000999
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "predictor": "core_history_skill",
+        "n": 518,
+        "partial_r": -0.16027740902950732,
+        "bootstrap_ci_low": -0.23181631104485706,
+        "bootstrap_ci_high": -0.08481619328025458,
+        "max_stat_permutation_p": 0.000999000999000999
+      }
+    ],
+    "cohort_associations": [
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_1",
+        "predictor": "core_forecastability",
+        "n": 88,
+        "partial_r": 0.007573906534084891
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_1",
+        "predictor": "core_history_skill",
+        "n": 88,
+        "partial_r": 0.05069460864895424
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_2",
+        "predictor": "core_forecastability",
+        "n": 152,
+        "partial_r": -0.3421283015533232
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_2",
+        "predictor": "core_history_skill",
+        "n": 152,
+        "partial_r": -0.2826281600054538
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_3",
+        "predictor": "core_forecastability",
+        "n": 112,
+        "partial_r": -0.14757783415568113
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_3",
+        "predictor": "core_history_skill",
+        "n": 112,
+        "partial_r": -0.24126842926858566
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_4",
+        "predictor": "core_forecastability",
+        "n": 166,
+        "partial_r": -0.010037034552340127
+      },
+      {
+        "control_set": "direct_core_sd",
+        "institute_year": "INS-W_4",
+        "predictor": "core_history_skill",
+        "n": 166,
+        "partial_r": -0.08863232465214907
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_1",
+        "predictor": "core_forecastability",
+        "n": 88,
+        "partial_r": 0.033616914167574174
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_1",
+        "predictor": "core_history_skill",
+        "n": 88,
+        "partial_r": 0.07829270834994209
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_2",
+        "predictor": "core_forecastability",
+        "n": 152,
+        "partial_r": -0.35330670386901
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_2",
+        "predictor": "core_history_skill",
+        "n": 152,
+        "partial_r": -0.32692653095816904
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_3",
+        "predictor": "core_forecastability",
+        "n": 112,
+        "partial_r": -0.1819464042785698
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_3",
+        "predictor": "core_history_skill",
+        "n": 112,
+        "partial_r": -0.21052774501579322
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_4",
+        "predictor": "core_forecastability",
+        "n": 166,
+        "partial_r": -0.027204292501136963
+      },
+      {
+        "control_set": "direct_core_sd_entropy",
+        "institute_year": "INS-W_4",
+        "predictor": "core_history_skill",
+        "n": 166,
+        "partial_r": -0.07509066093504357
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_1",
+        "predictor": "core_forecastability",
+        "n": 88,
+        "partial_r": -0.04172540488029852
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_1",
+        "predictor": "core_history_skill",
+        "n": 88,
+        "partial_r": 0.001018082606985674
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_2",
+        "predictor": "core_forecastability",
+        "n": 152,
+        "partial_r": -0.34243511734835835
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_2",
+        "predictor": "core_history_skill",
+        "n": 152,
+        "partial_r": -0.2824483772408541
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_3",
+        "predictor": "core_forecastability",
+        "n": 112,
+        "partial_r": -0.17004219441704094
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_3",
+        "predictor": "core_history_skill",
+        "n": 112,
+        "partial_r": -0.2177646799306916
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_4",
+        "predictor": "core_forecastability",
+        "n": 166,
+        "partial_r": -0.01879117164259595
+      },
+      {
+        "control_set": "variability_pc3_plus_direct_core_sd",
+        "institute_year": "INS-W_4",
+        "predictor": "core_history_skill",
+        "n": 166,
+        "partial_r": -0.0823584121945164
+      }
+    ]
+  },
+  "decision": "common_distress_forecastability_association_supported",
+  "independent_replication_required": true,
+  "figures": [
+    "results/distress_sensitivity/forecastability_common_distress.png",
+    "results/distress_sensitivity/cohort_replication.png"
+  ]
+}

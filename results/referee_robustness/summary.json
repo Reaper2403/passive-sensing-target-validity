@@ -1,0 +1,305 @@
+{
+  "question": "Do the central E27 results survive the referee's artifact checks?",
+  "source_sample": {
+    "rows": 332943,
+    "trajectory_keys": 697,
+    "released_user_ids": 697
+  },
+  "overlap_metadata": {
+    "url": "https://raw.githubusercontent.com/UW-EXP/GLOBEM/4f140fc5290dc97204298cca28b956165aa0a29f/data/additional_user_setup/overlapping_pids.json",
+    "commit": "4f140fc5290dc97204298cca28b956165aa0a29f",
+    "sha256": "8320d6b2a012bec53c5cf777dd8f127d5d8162a0e483655b028394899403d532",
+    "n_repeat_candidate_trajectory_keys": 378
+  },
+  "expanding_refit_core_degree": {
+    "regime": "expanding_refit",
+    "scope": "core",
+    "analysis": "pooled",
+    "measure": "forecastability",
+    "n_trajectories": 521,
+    "pearson_r": 0.40715833964292447,
+    "ci_low": 0.30708937483766285,
+    "ci_high": 0.49554449469572426
+  },
+  "disjoint_refit_core_degree": {
+    "regime": "disjoint_refit",
+    "scope": "core",
+    "analysis": "pooled",
+    "measure": "forecastability",
+    "n_trajectories": 499,
+    "pearson_r": 0.32249238447384626,
+    "ci_low": 0.21923808439598236,
+    "ci_high": 0.41444196422007884
+  },
+  "expanding_refit_core_profile": {
+    "regime": "expanding_refit",
+    "scope": "core",
+    "measure": "forecastability",
+    "sample": "all_trajectories",
+    "n_trajectories": 521,
+    "same_person_mean": 0.34912408988845756,
+    "matched_cross_person_mean": 0.0686540888825455,
+    "delta": 0.2804700010059121,
+    "permutation_p": 9.999000099990002e-05,
+    "n_permutations": 10000
+  },
+  "disjoint_refit_core_profile": {
+    "regime": "disjoint_refit",
+    "scope": "core",
+    "measure": "forecastability",
+    "sample": "all_trajectories",
+    "n_trajectories": 499,
+    "same_person_mean": 0.3410875815188432,
+    "matched_cross_person_mean": 0.0754576957872966,
+    "delta": 0.2656298857315466,
+    "permutation_p": 9.999000099990002e-05,
+    "n_permutations": 10000
+  },
+  "fixed_model_core_variability_overlap": {
+    "regime": "fixed_original",
+    "scope": "core",
+    "analysis": "person_average_composite",
+    "predictor": "forecastability",
+    "variability_measure": "variability",
+    "n": 521,
+    "pearson_r": -0.9121934476195503,
+    "spearman_r": -0.9087743593137729
+  },
+  "fixed_model_known_single_year_sensitivity": {
+    "regime": "fixed_original",
+    "scope": "core",
+    "analysis": "known_single_year_only",
+    "measure": "forecastability",
+    "n_trajectories": 232,
+    "pearson_r": 0.41730329594911203,
+    "ci_low": 0.26145860708715635,
+    "ci_high": 0.5620306386803848
+  },
+  "original_h1_after_sd_entropy_control": {
+    "regime": "fixed_original",
+    "scope": "core",
+    "analysis": "residual_variability_entropy",
+    "measure": "forecastability",
+    "n_trajectories": 521,
+    "pearson_r": 0.22999774253581529,
+    "ci_low": 0.04919973506382645,
+    "ci_high": 0.40910774919017195,
+    "pre_specified_threshold": 0.3,
+    "passed": false
+  },
+  "residualized_core_profiles": [
+    {
+      "regime": "disjoint_refit",
+      "scope": "core",
+      "measure": "forecastability_residual_sd_entropy",
+      "sample": "all_trajectories",
+      "n_trajectories": 499,
+      "same_person_mean": 0.1740215868325551,
+      "matched_cross_person_mean": 0.011924124302408527,
+      "delta": 0.16209746253014656,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "expanding_refit",
+      "scope": "core",
+      "measure": "forecastability_residual_sd_entropy",
+      "sample": "all_trajectories",
+      "n_trajectories": 521,
+      "same_person_mean": 0.18378541259379172,
+      "matched_cross_person_mean": 0.01256006039381081,
+      "delta": 0.17122535219998092,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    },
+    {
+      "regime": "fixed_original",
+      "scope": "core",
+      "measure": "forecastability_residual_sd_entropy",
+      "sample": "all_trajectories",
+      "n_trajectories": 521,
+      "same_person_mean": 0.1903980055025129,
+      "matched_cross_person_mean": 0.010853838569535285,
+      "delta": 0.17954416693297762,
+      "permutation_p": 9.999000099990002e-05,
+      "n_permutations": 10000
+    }
+  ],
+  "residualized_profile_gate_passed_all_regimes": true,
+  "history_skill": {
+    "person_average_sd_overlap": {
+      "regime": "fixed_original",
+      "scope": "core",
+      "analysis": "person_average_composite",
+      "predictor": "history_skill",
+      "variability_measure": "variability",
+      "n": 521,
+      "pearson_r": -0.2681080154151391,
+      "spearman_r": -0.28248310142876293
+    },
+    "target_half_sd_overlap": {
+      "regime": "fixed_original",
+      "scope": "target_half_rows",
+      "analysis": "within_target_half_standardized",
+      "predictor": "history_skill",
+      "variability_measure": "observed_sd",
+      "n": 18012,
+      "pearson_r": -0.17702301197906917,
+      "spearman_r": -0.2941361884358945
+    },
+    "person_average_entropy_overlap": {
+      "regime": "fixed_original",
+      "scope": "core",
+      "analysis": "person_average_composite",
+      "predictor": "history_skill",
+      "variability_measure": "entropy",
+      "n": 521,
+      "pearson_r": -0.5177257795299436,
+      "spearman_r": -0.5045006287643127
+    },
+    "stability": [
+      {
+        "regime": "disjoint_refit",
+        "scope": "core",
+        "analysis": "pooled",
+        "measure": "history_skill",
+        "n_trajectories": 499,
+        "pearson_r": 0.4447782662076684,
+        "ci_low": 0.3501689286039815,
+        "ci_high": 0.526516675421685
+      },
+      {
+        "regime": "expanding_refit",
+        "scope": "core",
+        "analysis": "pooled",
+        "measure": "history_skill",
+        "n_trajectories": 521,
+        "pearson_r": 0.47325960351728485,
+        "ci_low": 0.39431011976675506,
+        "ci_high": 0.5441303048330153
+      },
+      {
+        "regime": "fixed_original",
+        "scope": "core",
+        "analysis": "pooled",
+        "measure": "history_skill",
+        "n_trajectories": 521,
+        "pearson_r": 0.4837177564638716,
+        "ci_low": 0.405099237616472,
+        "ci_high": 0.5559170759287138
+      }
+    ],
+    "sd_entropy_residual_stability": [
+      {
+        "regime": "disjoint_refit",
+        "scope": "core",
+        "analysis": "residual_variability_entropy",
+        "measure": "history_skill",
+        "n_trajectories": 499,
+        "pearson_r": 0.40461389751113735,
+        "ci_low": 0.3071450948525568,
+        "ci_high": 0.5026520459839049
+      },
+      {
+        "regime": "expanding_refit",
+        "scope": "core",
+        "analysis": "residual_variability_entropy",
+        "measure": "history_skill",
+        "n_trajectories": 521,
+        "pearson_r": 0.3174893227036792,
+        "ci_low": 0.23702835755486068,
+        "ci_high": 0.41047574998800257
+      },
+      {
+        "regime": "fixed_original",
+        "scope": "core",
+        "analysis": "residual_variability_entropy",
+        "measure": "history_skill",
+        "n_trajectories": 521,
+        "pearson_r": 0.33600951860497263,
+        "ci_low": 0.2585746838997488,
+        "ci_high": 0.41767853814111716
+      }
+    ],
+    "profiles": [
+      {
+        "regime": "disjoint_refit",
+        "scope": "core",
+        "measure": "history_skill",
+        "sample": "all_trajectories",
+        "n_trajectories": 499,
+        "same_person_mean": 0.36385204217934836,
+        "matched_cross_person_mean": 0.03181965795010129,
+        "delta": 0.3320323842292471,
+        "permutation_p": 0.001996007984031936,
+        "n_permutations": 500
+      },
+      {
+        "regime": "expanding_refit",
+        "scope": "core",
+        "measure": "history_skill",
+        "sample": "all_trajectories",
+        "n_trajectories": 521,
+        "same_person_mean": 0.48618479061130837,
+        "matched_cross_person_mean": 0.031992928680545166,
+        "delta": 0.4541918619307632,
+        "permutation_p": 0.001996007984031936,
+        "n_permutations": 500
+      },
+      {
+        "regime": "fixed_original",
+        "scope": "core",
+        "measure": "history_skill",
+        "sample": "all_trajectories",
+        "n_trajectories": 521,
+        "same_person_mean": 0.4891572116687441,
+        "matched_cross_person_mean": 0.034855251030821606,
+        "delta": 0.4543019606379225,
+        "permutation_p": 0.001996007984031936,
+        "n_permutations": 500
+      }
+    ],
+    "sd_entropy_residual_profiles": [
+      {
+        "regime": "disjoint_refit",
+        "scope": "core",
+        "measure": "history_skill_residual_sd_entropy",
+        "sample": "all_trajectories",
+        "n_trajectories": 499,
+        "same_person_mean": 0.26116041796155554,
+        "matched_cross_person_mean": 0.006770681880575119,
+        "delta": 0.2543897360809804,
+        "permutation_p": 9.999000099990002e-05,
+        "n_permutations": 10000
+      },
+      {
+        "regime": "expanding_refit",
+        "scope": "core",
+        "measure": "history_skill_residual_sd_entropy",
+        "sample": "all_trajectories",
+        "n_trajectories": 521,
+        "same_person_mean": 0.36878329102782104,
+        "matched_cross_person_mean": 0.009112494373173161,
+        "delta": 0.35967079665464785,
+        "permutation_p": 9.999000099990002e-05,
+        "n_permutations": 10000
+      },
+      {
+        "regime": "fixed_original",
+        "scope": "core",
+        "measure": "history_skill_residual_sd_entropy",
+        "sample": "all_trajectories",
+        "n_trajectories": 521,
+        "same_person_mean": 0.37024389823615106,
+        "matched_cross_person_mean": 0.008410030302836557,
+        "delta": 0.3618338679333145,
+        "permutation_p": 9.999000099990002e-05,
+        "n_permutations": 10000
+      }
+    ],
+    "degree_gate_passed_all_regimes": true,
+    "sd_entropy_residual_degree_gate_passed_all_regimes": true,
+    "sd_entropy_residual_profile_gate_passed_all_regimes": true
+  },
+  "claim_decision": "The raw forecastability degree dissolves into inverse variability and its variability-independent H1 fails the 0.30 gate. Target-residualized profiles and relative history skill survive across all model regimes, but pooled models make these transferability rather than idiographic learnability measures."
+}

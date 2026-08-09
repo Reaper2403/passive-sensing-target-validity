@@ -1,0 +1,539 @@
+{
+  "allowed_value_operation": "hard finite/bounds validation plus robust-scale degeneracy pass/fail only; no values or scale statistics emitted",
+  "audit_type": "Phase A count-only, outcome-blind feasibility audit",
+  "branch_decision": {
+    "families_passing_preferred": [
+      "mobility",
+      "phone_interaction"
+    ],
+    "families_passing_reduced": [],
+    "families_retained_for_execution": [],
+    "sample_size_gate": {
+      "minimum_eligible_person_targets_per_institute_year": 30,
+      "minimum_eligible_person_targets_total": 160
+    },
+    "selected_branch": null,
+    "selected_targets_retained_for_execution": {},
+    "status": "feasibility_boundary_no_personalization_test"
+  },
+  "cohorts_after_repeat_exclusion": {
+    "INS-W_1": {
+      "duplicate_person_date_rows": 0,
+      "excluded_repeat_candidate_trajectories": 29,
+      "raw_person_day_rows_before_exclusion": 14260,
+      "raw_person_trajectories": 155,
+      "remaining_person_trajectories": 126,
+      "retained_person_day_rows": 11592
+    },
+    "INS-W_2": {
+      "duplicate_person_date_rows": 0,
+      "excluded_repeat_candidate_trajectories": 92,
+      "raw_person_day_rows_before_exclusion": 21146,
+      "raw_person_trajectories": 218,
+      "remaining_person_trajectories": 126,
+      "retained_person_day_rows": 12222
+    },
+    "INS-W_3": {
+      "duplicate_person_date_rows": 0,
+      "excluded_repeat_candidate_trajectories": 98,
+      "raw_person_day_rows_before_exclusion": 14111,
+      "raw_person_trajectories": 137,
+      "remaining_person_trajectories": 39,
+      "retained_person_day_rows": 4017
+    },
+    "INS-W_4": {
+      "duplicate_person_date_rows": 0,
+      "excluded_repeat_candidate_trajectories": 124,
+      "raw_person_day_rows_before_exclusion": 20085,
+      "raw_person_trajectories": 195,
+      "remaining_person_trajectories": 71,
+      "retained_person_day_rows": 7313
+    }
+  },
+  "eligibility_counts": {
+    "active_duration": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 106,
+          "INS-W_3": 14,
+          "INS-W_4": 65
+        },
+        "eligible_person_targets_total": 264
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 84,
+          "INS-W_2": 0,
+          "INS-W_3": 14,
+          "INS-W_4": 38
+        },
+        "eligible_person_targets_total": 136
+      }
+    },
+    "bluetooth_unique_devices": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 95,
+          "INS-W_2": 120,
+          "INS-W_3": 18,
+          "INS-W_4": 60
+        },
+        "eligible_person_targets_total": 293
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 77,
+          "INS-W_2": 109,
+          "INS-W_3": 15,
+          "INS-W_4": 56
+        },
+        "eligible_person_targets_total": 257
+      }
+    },
+    "incoming_call_count": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 22,
+          "INS-W_2": 46,
+          "INS-W_3": 16,
+          "INS-W_4": 47
+        },
+        "eligible_person_targets_total": 131
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 16,
+          "INS-W_2": 37,
+          "INS-W_3": 12,
+          "INS-W_4": 47
+        },
+        "eligible_person_targets_total": 112
+      }
+    },
+    "location_distance": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 104,
+          "INS-W_2": 121,
+          "INS-W_3": 26,
+          "INS-W_4": 59
+        },
+        "eligible_person_targets_total": 310
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 113,
+          "INS-W_3": 22,
+          "INS-W_4": 58
+        },
+        "eligible_person_targets_total": 272
+      }
+    },
+    "location_entropy": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 104,
+          "INS-W_2": 122,
+          "INS-W_3": 36,
+          "INS-W_4": 67
+        },
+        "eligible_person_targets_total": 329
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 113,
+          "INS-W_3": 29,
+          "INS-W_4": 67
+        },
+        "eligible_person_targets_total": 288
+      }
+    },
+    "location_home_time": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 104,
+          "INS-W_2": 121,
+          "INS-W_3": 26,
+          "INS-W_4": 59
+        },
+        "eligible_person_targets_total": 310
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 113,
+          "INS-W_3": 22,
+          "INS-W_4": 58
+        },
+        "eligible_person_targets_total": 272
+      }
+    },
+    "outgoing_call_count": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 22,
+          "INS-W_2": 46,
+          "INS-W_3": 16,
+          "INS-W_4": 47
+        },
+        "eligible_person_targets_total": 131
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 16,
+          "INS-W_2": 37,
+          "INS-W_3": 12,
+          "INS-W_4": 47
+        },
+        "eligible_person_targets_total": 112
+      }
+    },
+    "screen_unlock_count": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 103,
+          "INS-W_2": 120,
+          "INS-W_3": 36,
+          "INS-W_4": 68
+        },
+        "eligible_person_targets_total": 327
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 80,
+          "INS-W_2": 112,
+          "INS-W_3": 29,
+          "INS-W_4": 68
+        },
+        "eligible_person_targets_total": 289
+      }
+    },
+    "screen_unlock_duration": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 103,
+          "INS-W_2": 120,
+          "INS-W_3": 36,
+          "INS-W_4": 68
+        },
+        "eligible_person_targets_total": 327
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 80,
+          "INS-W_2": 112,
+          "INS-W_3": 29,
+          "INS-W_4": 68
+        },
+        "eligible_person_targets_total": 289
+      }
+    },
+    "sedentary_duration": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 106,
+          "INS-W_3": 14,
+          "INS-W_4": 65
+        },
+        "eligible_person_targets_total": 264
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 84,
+          "INS-W_2": 0,
+          "INS-W_3": 14,
+          "INS-W_4": 38
+        },
+        "eligible_person_targets_total": 136
+      }
+    },
+    "significant_places": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 104,
+          "INS-W_2": 122,
+          "INS-W_3": 36,
+          "INS-W_4": 67
+        },
+        "eligible_person_targets_total": 329
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 113,
+          "INS-W_3": 29,
+          "INS-W_4": 67
+        },
+        "eligible_person_targets_total": 288
+      }
+    },
+    "sleep_duration": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 73,
+          "INS-W_2": 95,
+          "INS-W_3": 13,
+          "INS-W_4": 53
+        },
+        "eligible_person_targets_total": 234
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 72,
+          "INS-W_2": 0,
+          "INS-W_3": 13,
+          "INS-W_4": 32
+        },
+        "eligible_person_targets_total": 117
+      }
+    },
+    "sleep_efficiency": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 72,
+          "INS-W_2": 94,
+          "INS-W_3": 13,
+          "INS-W_4": 53
+        },
+        "eligible_person_targets_total": 232
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 72,
+          "INS-W_2": 0,
+          "INS-W_3": 13,
+          "INS-W_4": 32
+        },
+        "eligible_person_targets_total": 117
+      }
+    },
+    "sleep_in_bed": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 73,
+          "INS-W_2": 95,
+          "INS-W_3": 13,
+          "INS-W_4": 53
+        },
+        "eligible_person_targets_total": 234
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 72,
+          "INS-W_2": 0,
+          "INS-W_3": 13,
+          "INS-W_4": 32
+        },
+        "eligible_person_targets_total": 117
+      }
+    },
+    "steps_sum": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 79,
+          "INS-W_2": 106,
+          "INS-W_3": 14,
+          "INS-W_4": 65
+        },
+        "eligible_person_targets_total": 264
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 84,
+          "INS-W_2": 0,
+          "INS-W_3": 14,
+          "INS-W_4": 38
+        },
+        "eligible_person_targets_total": 136
+      }
+    },
+    "wifi_unique_devices": {
+      "preferred": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 8,
+          "INS-W_2": 30,
+          "INS-W_3": 36,
+          "INS-W_4": 69
+        },
+        "eligible_person_targets_total": 143
+      },
+      "reduced": {
+        "eligible_person_targets_by_institute_year": {
+          "INS-W_1": 7,
+          "INS-W_2": 22,
+          "INS-W_3": 29,
+          "INS-W_4": 69
+        },
+        "eligible_person_targets_total": 127
+      }
+    }
+  },
+  "generated_utc": "2026-08-09T16:10:55.485461Z",
+  "input_file_sha256": {
+    "data/raw/globem/1.1/INS-W_1/FeatureData/rapids.csv": "332c16c8209dad6baa3d5bd03fbd8f6a664358f2b6200fd31a7819bf8dd40fbe",
+    "data/raw/globem/1.1/INS-W_2/FeatureData/rapids.csv": "29b80fa4d957ceab8de59aa3bfd0c54e6b2e7fd6b587f981dff20477cc4642ab",
+    "data/raw/globem/1.1/INS-W_3/FeatureData/rapids.csv": "ddd944551141138e7b466e3c2b83da5932005b1c4295daad37e8556272ec213c",
+    "data/raw/globem/1.1/INS-W_4/FeatureData/rapids.csv": "c7bf148f58e93ae3558de6bb03bad08d687dc72352de07bf304342fdbfda4aee",
+    "experiments/personalization/run.py": "fc06a875df3e77fdb9170c28f943cd7fde958a4e1619c09bdca9f1fc9cb59e2a",
+    "experiments/run_behavioural_weather_forecast.py": "86b5ac38884f412ed399777c2734b1bede8c878d83417d66a7b2a7b7802b60c3"
+  },
+  "outcome_analysis_performed": false,
+  "repeat_metadata": {
+    "candidate_trajectory_key_count": 378,
+    "commit": "4f140fc5290dc97204298cca28b956165aa0a29f",
+    "expected_sha256": "8320d6b2a012bec53c5cf777dd8f127d5d8162a0e483655b028394899403d532",
+    "pid_metadata_written_to_git": false,
+    "url": "https://raw.githubusercontent.com/UW-EXP/GLOBEM/4f140fc5290dc97204298cca28b956165aa0a29f/data/additional_user_setup/overlapping_pids.json",
+    "verified_sha256": "8320d6b2a012bec53c5cf777dd8f127d5d8162a0e483655b028394899403d532"
+  },
+  "robust_scale_degeneracy": {
+    "degenerate_by_family_and_held_out_institute_year": {
+      "mobility": {
+        "INS-W_1": false,
+        "INS-W_2": false,
+        "INS-W_3": false,
+        "INS-W_4": false
+      },
+      "phone_interaction": {
+        "INS-W_1": false,
+        "INS-W_2": false,
+        "INS-W_3": false,
+        "INS-W_4": false
+      },
+      "physical_activity": {
+        "INS-W_1": false,
+        "INS-W_2": false,
+        "INS-W_3": false,
+        "INS-W_4": false
+      },
+      "sleep_daily_rhythm": {
+        "INS-W_1": false,
+        "INS-W_2": false,
+        "INS-W_3": false,
+        "INS-W_4": false
+      }
+    },
+    "globally_removed_families": [],
+    "operation": "per selected target and held-out institute-year using all observed target values from the three outer-training institute-years; pass/fail only"
+  },
+  "selected_target_by_family": {
+    "mobility": "location_entropy",
+    "phone_interaction": "screen_unlock_count",
+    "physical_activity": "active_duration",
+    "sleep_daily_rhythm": "sleep_duration"
+  },
+  "selection_basis": "preferred-branch missingness only; rank min cohort eligibility desc, total desc, target ID asc",
+  "selection_scorecards": {
+    "mobility": [
+      {
+        "minimum_eligible_person_targets_across_institute_years": 36,
+        "target": "location_entropy",
+        "total_eligible_person_targets": 329
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 36,
+        "target": "significant_places",
+        "total_eligible_person_targets": 329
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 26,
+        "target": "location_distance",
+        "total_eligible_person_targets": 310
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 26,
+        "target": "location_home_time",
+        "total_eligible_person_targets": 310
+      }
+    ],
+    "phone_interaction": [
+      {
+        "minimum_eligible_person_targets_across_institute_years": 36,
+        "target": "screen_unlock_count",
+        "total_eligible_person_targets": 327
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 36,
+        "target": "screen_unlock_duration",
+        "total_eligible_person_targets": 327
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 18,
+        "target": "bluetooth_unique_devices",
+        "total_eligible_person_targets": 293
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 16,
+        "target": "incoming_call_count",
+        "total_eligible_person_targets": 131
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 16,
+        "target": "outgoing_call_count",
+        "total_eligible_person_targets": 131
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 8,
+        "target": "wifi_unique_devices",
+        "total_eligible_person_targets": 143
+      }
+    ],
+    "physical_activity": [
+      {
+        "minimum_eligible_person_targets_across_institute_years": 14,
+        "target": "active_duration",
+        "total_eligible_person_targets": 264
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 14,
+        "target": "sedentary_duration",
+        "total_eligible_person_targets": 264
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 14,
+        "target": "steps_sum",
+        "total_eligible_person_targets": 264
+      }
+    ],
+    "sleep_daily_rhythm": [
+      {
+        "minimum_eligible_person_targets_across_institute_years": 13,
+        "target": "sleep_duration",
+        "total_eligible_person_targets": 234
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 13,
+        "target": "sleep_in_bed",
+        "total_eligible_person_targets": 234
+      },
+      {
+        "minimum_eligible_person_targets_across_institute_years": 13,
+        "target": "sleep_efficiency",
+        "total_eligible_person_targets": 232
+      }
+    ]
+  },
+  "study_day_rule": "calendar day, 1-indexed from each retained person-trajectory's earliest RAPIDS date",
+  "target_columns": {
+    "active_duration": "f_steps:fitbit_steps_intraday_rapids_sumdurationactivebout:allday",
+    "bluetooth_unique_devices": "f_blue:phone_bluetooth_rapids_uniquedevices:allday",
+    "incoming_call_count": "f_call:phone_calls_rapids_incoming_count:allday",
+    "location_distance": "f_loc:phone_locations_barnett_disttravelled:allday",
+    "location_entropy": "f_loc:phone_locations_doryab_locationentropy:allday",
+    "location_home_time": "f_loc:phone_locations_barnett_hometime:allday",
+    "outgoing_call_count": "f_call:phone_calls_rapids_outgoing_count:allday",
+    "screen_unlock_count": "f_screen:phone_screen_rapids_countepisodeunlock:allday",
+    "screen_unlock_duration": "f_screen:phone_screen_rapids_sumdurationunlock:allday",
+    "sedentary_duration": "f_steps:fitbit_steps_intraday_rapids_sumdurationsedentarybout:allday",
+    "significant_places": "f_loc:phone_locations_doryab_numberofsignificantplaces:allday",
+    "sleep_duration": "f_slp:fitbit_sleep_summary_rapids_sumdurationasleepmain:allday",
+    "sleep_efficiency": "f_slp:fitbit_sleep_summary_rapids_avgefficiencymain:allday",
+    "sleep_in_bed": "f_slp:fitbit_sleep_summary_rapids_sumdurationinbedmain:allday",
+    "steps_sum": "f_steps:fitbit_steps_intraday_rapids_sumsteps:allday",
+    "wifi_unique_devices": "f_wifi:phone_wifi_connected_rapids_uniquedevices:allday"
+  }
+}

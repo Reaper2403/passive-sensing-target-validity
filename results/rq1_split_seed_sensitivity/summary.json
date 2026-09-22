@@ -1,0 +1,34 @@
+{
+  "contract": "docs/74_rq1_split_seed_sensitivity_contract.md",
+  "test_fracs": [
+    0.25,
+    0.35,
+    0.45
+  ],
+  "seeds": [
+    11,
+    42,
+    73
+  ],
+  "n_estimators": 300,
+  "summary": [
+    {
+      "contrast": "allday_plus_prior_minus_prior",
+      "median_delta": -0.012854788808178585,
+      "minimum_delta": -0.015166768199342373,
+      "maximum_delta": -0.003711034373040545,
+      "n_nonpositive": 9,
+      "n_cells": 9,
+      "robust_no_material_increment": true
+    },
+    {
+      "contrast": "history_plus_prior_minus_prior",
+      "median_delta": -0.004166073208944465,
+      "minimum_delta": -0.012187194661522183,
+      "maximum_delta": -0.0012128358460373745,
+      "n_nonpositive": 9,
+      "n_cells": 9,
+      "robust_no_material_increment": true
+    }
+  ]
+}

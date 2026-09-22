@@ -34,6 +34,19 @@ def verify_headlines() -> list[str]:
     )
     checked.append("label-history control")
 
+    clustered = load("results/rq1_clustered_inference/summary.json")
+    history_delta = next(
+        row for row in clustered["results"]
+        if row["model"] == "history_raw_plus_prior_label_rate"
+    )
+    close("clustered history increment", history_delta["delta_auroc"], -0.0030496364299952283)
+    if not history_delta["ci_low"] < 0 < history_delta["ci_high"]:
+        raise AssertionError("Clustered RQ1 interval must include zero")
+    within = load("results/rq1_within_person_deviation/summary.json")
+    primary_within = next(row for row in within["metrics"] if row["primary"])
+    close("within-person AUROC", primary_within["macro_within_trajectory_auroc"], 0.5136817325800376)
+    checked.append("RQ1 clustered and within-person controls")
+
     fragility = load("results/construct_fragility_audit/summary.json")
     close("construct overlap", fragility["median_same_day_abs_r"], 0.6628291199453776)
     checked.append("construct overlap")
@@ -52,6 +65,10 @@ def verify_headlines() -> list[str]:
         0.78754700157869,
     )
     checked.append("behavior forecast")
+
+    forecast = load("results/report_statistical_supplements/rq2_summary.json")
+    close("tomorrow median R2", forecast["horizons"]["tomorrow"]["r2"]["median"], 0.26007497444366356)
+    checked.append("RQ2 robust summaries")
 
     robust = load("results/referee_robustness/summary.json")
     close(
@@ -89,6 +106,13 @@ def verify_headlines() -> list[str]:
     if feasibility["branch_decision"]["status"] != "feasibility_boundary_no_personalization_test":
         raise AssertionError("Personalization feasibility status changed")
     checked.append("personalization stop")
+
+    android = load("results/android_pilot/summary.json")
+    close("Android no-action MAE", next(x["mae"] for x in android["policy_metrics"] if x["model"] == "keep_current"), 8.17)
+    september = load("results/android_pilot/september_summary.json")
+    if not september["day_clustered_paired_mae"]["ci_95"][0] < 0 < september["day_clustered_paired_mae"]["ci_95"][1]:
+        raise AssertionError("September improvement interval must include zero")
+    checked.append("single-user Android pilot")
     return checked
 
 
@@ -104,6 +128,10 @@ def verify_report() -> None:
         "report/figures/forecastability_construct_audit.png",
         "report/figures/typology_validation.png",
         "report/figures/validity_boundary_auroc.png",
+        "report/figures/android_pilot_workflow.png",
+        "report/figures/android_pilot_policy_cost.png",
+        "report/figures/android_september_followup.png",
+        "results/report_statistical_supplements/rq2_per_target_table.tex",
     ]
     missing = [path for path in required if not (ROOT / path).is_file()]
     if missing:

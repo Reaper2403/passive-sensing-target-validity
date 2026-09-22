@@ -1,0 +1,290 @@
+{
+  "selection": {
+    "issue_time": "evening",
+    "model": "history_fingerprint_plus_today"
+  },
+  "horizons": {
+    "tomorrow": {
+      "r2": {
+        "n_targets": 16,
+        "mean": 0.2716253862926227,
+        "median": 0.26007497444366356,
+        "q1": 0.225497820456772,
+        "q3": 0.32320314994608723,
+        "minimum": -0.1131233513810396,
+        "maximum": 0.6372528012307623
+      },
+      "auroc": {
+        "n_targets": 16,
+        "mean": 0.7875470015786898,
+        "median": 0.7946617978272428,
+        "q1": 0.7301945197417188,
+        "q3": 0.8297738548100078,
+        "minimum": 0.6993848161157867,
+        "maximum": 0.8840448485837702
+      }
+    },
+    "next_week": {
+      "r2": {
+        "n_targets": 16,
+        "mean": 0.5060462285474765,
+        "median": 0.5793922460528741,
+        "q1": 0.40760777861021036,
+        "q3": 0.6571377815896103,
+        "minimum": -0.1433210091907342,
+        "maximum": 0.8238185106677793
+      },
+      "auroc": {
+        "n_targets": 16,
+        "mean": 0.8707346694083162,
+        "median": 0.8747741839224963,
+        "q1": 0.8292187969994845,
+        "q3": 0.9203220264972962,
+        "minimum": 0.7728234809628172,
+        "maximum": 0.9395444305518844
+      }
+    }
+  },
+  "baseline_comparison": [
+    {
+      "horizon": "tomorrow",
+      "metric": "r2",
+      "model": "calendar_only",
+      "n_targets": 16,
+      "mean": -0.006882256339506206,
+      "median": -0.00289867629008695,
+      "q1": -0.012862104463154025,
+      "q3": -0.00147933007011505,
+      "minimum": -0.0264204013988771,
+      "maximum": 0.0048137255135926
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "auroc",
+      "model": "calendar_only",
+      "n_targets": 16,
+      "mean": 0.5435582320042609,
+      "median": 0.5430825761707903,
+      "q1": 0.5220618292786436,
+      "q3": 0.5544893111903733,
+      "minimum": 0.4891482501929476,
+      "maximum": 0.6405423417991057
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "r2",
+      "model": "recent_history_only",
+      "n_targets": 16,
+      "mean": 0.24358770997503265,
+      "median": 0.2448756970613754,
+      "q1": 0.15724432384154735,
+      "q3": 0.2923529766410892,
+      "minimum": -0.1544695993156466,
+      "maximum": 0.6391436214159086
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "auroc",
+      "model": "recent_history_only",
+      "n_targets": 16,
+      "mean": 0.7668640889413182,
+      "median": 0.7824965762626896,
+      "q1": 0.6967744087084999,
+      "q3": 0.820604122470121,
+      "minimum": 0.626912652713365,
+      "maximum": 0.8758252580577206
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "r2",
+      "model": "fingerprint_42d_only",
+      "n_targets": 16,
+      "mean": 0.2517107110349298,
+      "median": 0.24096694595597473,
+      "q1": 0.15307639065518627,
+      "q3": 0.3009492594876566,
+      "minimum": 0.0002574471035893,
+      "maximum": 0.6277086705777197
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "auroc",
+      "model": "fingerprint_42d_only",
+      "n_targets": 16,
+      "mean": 0.7769515684125008,
+      "median": 0.7830899082415854,
+      "q1": 0.70739550079778,
+      "q3": 0.8199651402145162,
+      "minimum": 0.6985575820975707,
+      "maximum": 0.881329436135103
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "r2",
+      "model": "history_plus_fingerprint",
+      "n_targets": 16,
+      "mean": 0.2588134058122218,
+      "median": 0.25647096387450435,
+      "q1": 0.17480122776315454,
+      "q3": 0.3133937066485653,
+      "minimum": -0.1131233513810396,
+      "maximum": 0.6372528012307623
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "auroc",
+      "model": "history_plus_fingerprint",
+      "n_targets": 16,
+      "mean": 0.7819240187220082,
+      "median": 0.793518891071293,
+      "q1": 0.7088578609533905,
+      "q3": 0.8263426561442381,
+      "minimum": 0.6993848161157867,
+      "maximum": 0.882309499566978
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "r2",
+      "model": "history_fingerprint_plus_today",
+      "n_targets": 16,
+      "mean": 0.2716253862926227,
+      "median": 0.26007497444366356,
+      "q1": 0.225497820456772,
+      "q3": 0.32320314994608723,
+      "minimum": -0.1131233513810396,
+      "maximum": 0.6372528012307623
+    },
+    {
+      "horizon": "tomorrow",
+      "metric": "auroc",
+      "model": "history_fingerprint_plus_today",
+      "n_targets": 16,
+      "mean": 0.7875470015786898,
+      "median": 0.7946617978272428,
+      "q1": 0.7301945197417188,
+      "q3": 0.8297738548100078,
+      "minimum": 0.6993848161157867,
+      "maximum": 0.8840448485837702
+    },
+    {
+      "horizon": "next_week",
+      "metric": "r2",
+      "model": "calendar_only",
+      "n_targets": 16,
+      "mean": -0.0183746830623121,
+      "median": -0.012418370246995752,
+      "q1": -0.027974383632412725,
+      "q3": -0.001147819710708825,
+      "minimum": -0.0774067913143359,
+      "maximum": 0.019326959821651
+    },
+    {
+      "horizon": "next_week",
+      "metric": "auroc",
+      "model": "calendar_only",
+      "n_targets": 16,
+      "mean": 0.5514165199345726,
+      "median": 0.5310594552668262,
+      "q1": 0.5124077057703156,
+      "q3": 0.5986661520316643,
+      "minimum": 0.4869013077926414,
+      "maximum": 0.687695065532713
+    },
+    {
+      "horizon": "next_week",
+      "metric": "r2",
+      "model": "recent_history_only",
+      "n_targets": 16,
+      "mean": 0.46131945897575555,
+      "median": 0.5293803605491516,
+      "q1": 0.3421152316556966,
+      "q3": 0.6267999814797962,
+      "minimum": -0.2330551714612614,
+      "maximum": 0.8273467447900185
+    },
+    {
+      "horizon": "next_week",
+      "metric": "auroc",
+      "model": "recent_history_only",
+      "n_targets": 16,
+      "mean": 0.851253364982979,
+      "median": 0.852584553448377,
+      "q1": 0.8017081562343258,
+      "q3": 0.9113275710346057,
+      "minimum": 0.7391913345578289,
+      "maximum": 0.9308623392723466
+    },
+    {
+      "horizon": "next_week",
+      "metric": "r2",
+      "model": "fingerprint_42d_only",
+      "n_targets": 16,
+      "mean": 0.5026871510565414,
+      "median": 0.562217540380082,
+      "q1": 0.4032257442124808,
+      "q3": 0.6382697583834908,
+      "minimum": 0.0474045814718702,
+      "maximum": 0.8115237035028147
+    },
+    {
+      "horizon": "next_week",
+      "metric": "auroc",
+      "model": "fingerprint_42d_only",
+      "n_targets": 16,
+      "mean": 0.8670637663477192,
+      "median": 0.8707240910777085,
+      "q1": 0.825615631388042,
+      "q3": 0.9123683974144967,
+      "minimum": 0.7695400419920946,
+      "maximum": 0.9471128160953622
+    },
+    {
+      "horizon": "next_week",
+      "metric": "r2",
+      "model": "history_plus_fingerprint",
+      "n_targets": 16,
+      "mean": 0.5009151494595345,
+      "median": 0.5772417638852796,
+      "q1": 0.40198304786231653,
+      "q3": 0.6486773689800921,
+      "minimum": -0.1433210091907342,
+      "maximum": 0.8238185106677793
+    },
+    {
+      "horizon": "next_week",
+      "metric": "auroc",
+      "model": "history_plus_fingerprint",
+      "n_targets": 16,
+      "mean": 0.8690583167330117,
+      "median": 0.8736816008286333,
+      "q1": 0.8254798132282299,
+      "q3": 0.9184284327610882,
+      "minimum": 0.7728234809628172,
+      "maximum": 0.936234738916499
+    },
+    {
+      "horizon": "next_week",
+      "metric": "r2",
+      "model": "history_fingerprint_plus_today",
+      "n_targets": 16,
+      "mean": 0.5060462285474765,
+      "median": 0.5793922460528741,
+      "q1": 0.40760777861021036,
+      "q3": 0.6571377815896103,
+      "minimum": -0.1433210091907342,
+      "maximum": 0.8238185106677793
+    },
+    {
+      "horizon": "next_week",
+      "metric": "auroc",
+      "model": "history_fingerprint_plus_today",
+      "n_targets": 16,
+      "mean": 0.8707346694083162,
+      "median": 0.8747741839224963,
+      "q1": 0.8292187969994845,
+      "q3": 0.9203220264972962,
+      "minimum": 0.7728234809628172,
+      "maximum": 0.9395444305518844
+    }
+  ]
+}

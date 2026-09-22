@@ -1,0 +1,3 @@
+contrast,median_delta,minimum_delta,maximum_delta,n_nonpositive,n_cells,robust_no_material_increment
+allday_plus_prior_minus_prior,-0.012854788808178585,-0.015166768199342373,-0.003711034373040545,9,9,True
+history_plus_prior_minus_prior,-0.004166073208944465,-0.012187194661522183,-0.0012128358460373745,9,9,True

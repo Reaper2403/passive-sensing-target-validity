@@ -24,7 +24,10 @@ def test_release_has_only_approved_public_artifacts() -> None:
 
 def test_report_headlines_match_aggregate_results() -> None:
     verify = load_script("verify_public_artifacts")
-    assert len(verify.verify_headlines()) == 7
+    checked = verify.verify_headlines()
+    assert "RQ1 clustered and within-person controls" in checked
+    assert "RQ2 robust summaries" in checked
+    assert "single-user Android pilot" in checked
     verify.verify_report()
 
 

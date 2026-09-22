@@ -1,0 +1,31 @@
+{
+  "contract": "docs/72_rq1_clustered_inference_contract.md",
+  "n_test_rows": 2927,
+  "n_trajectory_clusters": 697,
+  "n_bootstrap": 10000,
+  "seed": 20260830,
+  "results": [
+    {
+      "model": "allday_raw_plus_prior_label_rate",
+      "baseline": "prior_label_rate_only",
+      "model_auroc": 0.8403424670353838,
+      "baseline_auroc": 0.8444280674172024,
+      "delta_auroc": -0.004085600381818599,
+      "ci_low": -0.013392977776824735,
+      "ci_high": 0.00517950907841772,
+      "bootstrap_probability_positive": 0.1919,
+      "decision": "no_detectable_increment"
+    },
+    {
+      "model": "history_raw_plus_prior_label_rate",
+      "baseline": "prior_label_rate_only",
+      "model_auroc": 0.8413784309872072,
+      "baseline_auroc": 0.8444280674172024,
+      "delta_auroc": -0.0030496364299952283,
+      "ci_low": -0.013019647239220467,
+      "ci_high": 0.007181693820642809,
+      "bootstrap_probability_positive": 0.28,
+      "decision": "no_detectable_increment"
+    }
+  ]
+}

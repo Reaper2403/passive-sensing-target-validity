@@ -1,0 +1,20 @@
+{
+  "target_column": "dep_weekly.csv:dep",
+  "split": "within-trajectory chronological 65/35",
+  "rows": [
+    {
+      "split": "train",
+      "n": 5213,
+      "positive": 2367,
+      "negative": 2846,
+      "positive_rate": 0.4540571647803568
+    },
+    {
+      "split": "test",
+      "n": 2927,
+      "positive": 1395,
+      "negative": 1532,
+      "positive_rate": 0.47659719849675436
+    }
+  ]
+}

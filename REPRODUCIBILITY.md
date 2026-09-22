@@ -1,85 +1,65 @@
-# Reproducibility
+# Reproducibility and limits
 
-## Claim
+The final report is `report/main.pdf` (16 September 2026, 48 pages). The public
+repository offers three levels of reproducibility.
 
-The public repository rebuilds the report and verifies every headline value from the
-included aggregate outputs. Recomputing those outputs requires authorized access to
-GLOBEM v1.1; controlled participant data are not redistributed.
+## 1. Verify the frozen public evidence
 
-## Reference environment
-
-- Python: 3.14.6 for the frozen release; package metadata supports Python 3.10+
-- Dependency versions: `requirements-lock.txt`
-- PDF compiler: Tectonic
-- Operating system used for the frozen release: macOS
-
-Set up the environment from the repository root:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements-lock.txt
-python -m pip install -e .
-```
-
-## Level 1: verify the public artifacts
+From the repository root after installing `requirements-lock.txt` and `pyproject.toml`:
 
 ```bash
 python scripts/reproduce_report.py verify
 ```
 
-This command:
+This checks the tracked-file privacy policy, links, numerical headline assertions,
+presence of report assets, and tests. It does **not** need GLOBEM, private phone
+data, or a TeX compiler. The [claim map](report/CLAIM_SOURCE_MAP.md) links every
+major displayed result to a compact aggregate JSON or CSV file.
 
-1. audits the tracked release for prohibited data and artifact classes;
-2. checks frozen headline numbers directly against aggregate JSON and CSV files;
-3. runs the automated tests;
-4. regenerates the six report figures and compiles `report/main.pdf`.
+## 2. Rebuild the report from aggregate evidence
 
-It does not read `data/` or require GLOBEM.
+Install [Tectonic](https://tectonic-typesetting.github.io/) and run:
 
-## Level 2: recompute from controlled source data
+```bash
+python scripts/reproduce_report.py build
+```
 
-Follow [DATA_ACCESS.md](DATA_ACCESS.md), then run:
+This also regenerates all report figures and compiles the LaTeX PDF. The Android
+figures use privacy-safe aggregate extracts; the raw personal phone logs are not
+public. The sample-flow figure displays audited counts recorded in figure code.
+
+## 3. Recompute GLOBEM analyses
+
+Obtain authorized GLOBEM v1.1 data as described in [DATA_ACCESS.md](DATA_ACCESS.md),
+place it under the ignored `data/raw/` directory, and run:
 
 ```bash
 python scripts/reproduce_report.py full
 ```
 
-The full command executes only the analyses represented in the report:
+This executes the report-facing GLOBEM runners, including the RQ1 label-rate,
+clustered inference, within-person, split/seed, construct-overlap, behavioral
+forecasting, forecastability, mechanism, typology, and personalization-feasibility
+checks. It then builds the report. Full recomputation can take substantial CPU
+time. Outputs containing trajectories or predictions are ignored by Git and must
+not be published.
 
-1. local GLOBEM layout validation;
-2. canonical data audit;
-3. label-history baseline control;
-4. construct-fragility audit;
-5. prospective behavioral forecasting;
-6. forecastability and referee robustness checks;
-7. profile mechanism, typology, and distress sensitivity analyses;
-8. the outcome-blind personalization feasibility audit;
-9. artifact validation, tests, figure regeneration, and report compilation.
+## Boundary of the public release
 
-The prospective behavioral forecast and permutation-heavy robustness checks are the
-longest stages. Runtime depends strongly on CPU, memory, and storage.
+- The public artifacts reproduce numerical checks and displays, not the licensed
+  source data.
+- The separate Android pilot can be checked and visualized from aggregate values,
+  but **cannot** be independently recomputed from private raw logs here.
+- The September Android saved-model reconstruction did not independently establish
+  an immutable pre-September model freeze. Its MAE confidence interval crosses zero.
+- Post-hoc profile structure is not externally replicated or person-specific model
+  evidence.
+- The released depression target is a cohort-dependent screening proxy, not a
+  clinical diagnosis.
 
-## Output policy
-
-Full runs create both aggregate and participant-derived intermediate outputs.
-Participant-derived outputs are necessary for computation but are not public release
-artifacts. They remain local under ignored paths. Before publication, the release
-audit examines the exact tracked file set rather than trusting filename conventions
-alone.
-
-The report's quantitative provenance is recorded in
-[the claim-source map](report/CLAIM_SOURCE_MAP.md).
-No unrelated historical experiments are included in this repository.
-
-## Determinism and remaining limits
-
-Experiment runners set explicit random seeds where stochastic models, bootstrap
-intervals, or permutations are used. Exact floating-point equality can still vary
-slightly across architectures or library builds. The verifier uses tight numerical
-tolerances around the frozen headline values.
-
-The repository reproduces the reported analyses; it does not make controlled GLOBEM
-data public, reconstruct identities across cohorts, or turn post-hoc findings into
-prospectively registered evidence.
+The frozen development environment used Python 3.14; the published lock resolves
+under Python 3.12, which is used in CI. Exact floating-point output may vary with
+library and hardware versions. `requirements-lock.txt` records the tested packages.
+The report, aggregate files, code, and provenance map are the
+submission unit; older exploratory notebooks and raw artifacts are intentionally
+absent.

@@ -1,0 +1,44 @@
+{
+  "status": "post_hoc_design_diagnostic",
+  "input": "results/rq1_within_person_deviation/per_trajectory_auroc.parquet",
+  "seed": 20260831,
+  "n_simulations_per_grid_point": 20000,
+  "n_trajectories": 295,
+  "n_test_rows": 1295,
+  "rows_per_trajectory": {
+    "mean": 4.389830508474576,
+    "median": 4.0,
+    "minimum": 2,
+    "maximum": 6,
+    "q25": 4.0,
+    "q75": 5.0
+  },
+  "positive_negative_pairs_per_trajectory": {
+    "mean": 3.952542372881356,
+    "median": 3.0,
+    "minimum": 1,
+    "maximum": 9,
+    "q25": 3.0,
+    "q75": 4.0
+  },
+  "observed_primary_macro_auc": 0.5136817325800376,
+  "design_matched_detection_cutoff": 0.540225988700565,
+  "observed_upper_null_tail_probability": 0.2529373531323434,
+  "mde_80_percent_power_bracket_detection": {
+    "lower_exclusive": 0.55,
+    "upper_inclusive": 0.56
+  },
+  "mde_80_percent_power_bracket_full_rule": {
+    "lower_exclusive": 0.56,
+    "upper_inclusive": 0.57
+  },
+  "assumptions": [
+    "Observed positive and negative test-row counts are held fixed.",
+    "Every trajectory shares one true AUROC at each grid point.",
+    "Negative scores are N(0,1) and positive scores are N(delta,1), with delta chosen for the requested AUROC.",
+    "Trajectories and rows are conditionally independent in the simulation.",
+    "The fitted prediction model is treated as fixed; training and model-selection uncertainty are excluded.",
+    "The null 97.5th percentile approximates the existing lower-95%-bound-above-0.5 decision."
+  ],
+  "interpretation_boundary": "This post-hoc simulation describes sensitivity of the aggregate macro-AUROC under explicit parametric assumptions. It does not estimate power for a single user and does not turn the observed null into evidence of equivalence."
+}

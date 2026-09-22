@@ -1,0 +1,25 @@
+{
+  "scope": "single-author later-session exploratory follow-up; aggregate values only",
+  "status": "retrospective_saved_model_reconstruction",
+  "n_future": 110,
+  "n_interventions": 24,
+  "keep_mae": 9.854545454545455,
+  "hybrid_mae": 9.061696193609643,
+  "paired_mae_improvement": 0.792849260935811,
+  "relative_mae_improvement": 0.08045518330529447,
+  "day_clustered_paired_mae": {
+    "days": 14,
+    "draws": 10000,
+    "ci_95": [-0.17456682607260704, 1.889941954088083]
+  },
+  "adjustment_enrichment": {
+    "selected_adjusted": 17,
+    "selected_no_adjustment": 7,
+    "kept_adjusted": 38,
+    "kept_no_adjustment": 48,
+    "selected_adjustment_rate": 0.7083333333333334,
+    "kept_adjustment_rate": 0.4418604651162791,
+    "status": "exploratory_secondary_observational_result"
+  },
+  "interpretation_boundary": "The day-clustered MAE interval includes zero; an immutable pre-September policy freeze was not independently proven."
+}

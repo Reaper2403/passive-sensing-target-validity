@@ -1,0 +1,28 @@
+{
+  "contract": "docs/75_construct_overlap_sensitivity_contract.md",
+  "all_finite": {
+    "n_pairs": 29,
+    "median_abs_r": 0.6628291199453776,
+    "q1_abs_r": 0.5322368778313764,
+    "q3_abs_r": 0.7930693993733825
+  },
+  "cross_family_all_finite": {
+    "n_pairs": 23,
+    "median_abs_r": 0.6062585766983506,
+    "q1_abs_r": 0.2728393260867332,
+    "q3_abs_r": 0.7215594549639837
+  },
+  "cross_family_n_at_least_100_primary": {
+    "n_pairs": 22,
+    "median_abs_r": 0.5901602441090373,
+    "q1_abs_r": 0.25098487018602467,
+    "q3_abs_r": 0.7221087636742964
+  },
+  "same_phq_family": {
+    "n_pairs": 6,
+    "median_abs_r": 0.9118012754994593,
+    "q1_abs_r": 0.90896975664482,
+    "q3_abs_r": 0.9146847714556612
+  },
+  "interpretation": "Cross-family overlap remains substantial but is lower than the mixed summary containing derived PHQ representations."
+}

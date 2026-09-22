@@ -49,12 +49,13 @@
 \newcommand{\stopped}{\textcolor{statusblue}{\textbf{stopped}}}
 \newcommand{\inconclusive}{\textcolor{statusgray}{\textbf{inconclusive}}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \newcommand{\reporttitle}{Passive Sensing Target Validation and Behavioral Forecasting in GLOBEM}
 \newcommand{\reportsubtitle}{Research Project Report}
 \newcommand{\reportauthor}{Ashutosh Chatterjee}
-\newcommand{\reportdate}{9 August 2026}
+\newcommand{\reportdate}{16 September 2026}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -111,36 +112,42 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-This project examined what can be measured defensibly with longitudinal passive
-sensing in the GLOBEM dataset. The work used chronological evaluation, label-history
-baselines, construct-overlap checks, model-refitting controls, and explicit decision
-gates. It documented positive, negative, exploratory, and stopped analyses.
+This project tests what longitudinal passive sensing measures beyond simpler
+alternatives. Chronological evaluation in GLOBEM combined prior-label and temporal
+baselines with trajectory-clustered inference, within-person analysis, construct
+checks, and three model-refitting regimes.
 
-The strongest result concerns psychological-label validity. A prior same-person
-depression-label rate achieved held-out AUROC 0.844. Current-day passive features
-plus this baseline achieved 0.840, and passive history plus the baseline achieved
-0.841. The passive features therefore showed no positive increment beyond label
-history in this comparison. Ten repeated psychological measures also overlapped
-substantially. The median absolute same-day correlation was 0.663 among the finite
-pairwise estimates. These results show that passive-state claims in GLOBEM require
-label-history and construct-overlap controls.
+The released binary depression-screening proxy was positive in 45.4\% of training
+rows and 47.7\% of test rows. Prior same-person positive-label rate achieved held-out
+AUROC 0.844; adding current-day or historical passive features produced 0.840 and 0.841, with paired
+increment intervals $[-0.013,0.005]$ and $[-0.013,0.007]$. Among 295 trajectories
+containing both label classes, history plus prior label achieved mean
+within-trajectory AUROC 0.514 (95\% CI $[0.474,0.556]$). A count-matched simulation
+indicated sensitivity to a homogeneous moderate effect around AUROC 0.56, while the
+short trajectories could not resolve subtle heterogeneous or individual-user
+effects. After redundant PHQ representations were excluded, cross-family
+psychological measures had median absolute same-day correlation 0.590 (IQR
+0.251--0.722).
 
-Directly observed behavior was easier to evaluate. Across 16 targets, pooled models
-using history, a 42-day fingerprint, and the current partial day achieved mean
-held-out $R^2=0.272$ and AUROC 0.788 for tomorrow. However, the proposed scalar
-``forecastability'' score did not survive construct validation. Raw forecastability
-correlated $r=-0.912$ with behavioral standard deviation. After standard-deviation
-and marginal-entropy adjustment, split-half stability was $r=0.230$. This failed the
-internally recorded 0.30 gate.
+For tomorrow behavior, calendar-only models had mean held-out $R^2=-0.007$ and
+AUROC 0.544; recent same-channel history raised these to 0.244 and 0.767, while the
+complete model reached 0.272 and 0.788. Full-model performance varied substantially
+across 16 direct targets ($R^2$ $-0.113$ to 0.637; AUROC 0.699 to 0.884), showing
+that simple behavioral persistence supplied most of the forecast value. The
+initial forecastability score normalized history-model error by a global target
+standard deviation. Its $r=-0.912$ association with person-level behavioral
+standard deviation exposed a specification error: it mainly ranked low-variance
+trajectories. A corrected comparator-relative score instead measured the benefit of
+history over a calendar model for the same trajectory, target, and window. Its
+scalar form remained comparator-dependent and was not validated as a phenotype.
 
-A narrower post-hoc result remained. Continuous profiles of relative history
-benefit were more similar within person-year trajectories than across matched
-trajectories after test-window, training-window, and sequence-proxy controls. Because
-both prediction models were pooled, this profile measures domain-specific
-transferability of a population-average history mapping. It does not establish an
-idiographic model, stable person-level phenotype, or clinical trait. Cross-domain
-coupling and discrete routine types were unsupported. A later personalization study
-stopped at an outcome-blind feasibility gate; no personalization model was run.
+A narrower post-hoc result remained: continuous profiles of comparator-relative
+history benefit were more similar within person-year trajectories than across
+matched trajectories after moment and sequence-proxy controls. The profile measures
+domain-specific transferability of pooled history mappings, not a learned personal
+trait. Cross-domain coupling and discrete routine types were unsupported. A later
+personalization study ended at its outcome-blind feasibility check before any model
+was fitted.
 
 \chapter*{Data and Code Availability}
 \addcontentsline{toc}{chapter}{Data and Code Availability}
@@ -149,14 +156,13 @@ stopped at an outcome-blind feasibility gate; no personalization model was run.
 \citet{xu2022globem}. Restricted participant-level source data are not included in
 the submission repository. The repository contains code, analysis contracts,
 aggregate result files, checksums, and report figures. Source data must be obtained
-under the dataset's access terms.
+under the dataset's access terms. A supplementary Android pilot used the author's
+own self-instrumentation data. Exact app identities and raw personal logs are not
+redistributed; the report and tracked aggregate displays use generic app references.
 
-\textbf{Repository.} Code, contracts, public-safe aggregate outputs, and report
-sources are available at
-\url{https://github.com/Reaper2403/passive-sensing-target-validity}. The immutable
-release identifier for this report is \texttt{tuhh-project-report-v1}. The public
-repository was created from a clean, history-free snapshot so that restricted
-participant-derived artifacts in the private working repository are not exposed.
+\textbf{Repository.} The submission package contains the analysis code, contracts,
+aggregate outputs, report sources, and claim-to-output map. Participant-level GLOBEM
+data remain excluded under the dataset access terms.
 
 \textbf{Software.} Python scripts generated the CSV, JSON, and image outputs.
 Report figures were regenerated from aggregate outputs only. Tectonic is the sole
@@ -166,6 +172,32 @@ tested document compiler. Exact source and output paths are listed in
 \textbf{AI-assisted tools.} OpenAI Codex was used as an assistive tool for document structuring, code drafting, and consistency checks. The author reviewed and verified the resulting code, analyses, citations, figures, and final text and remains responsible for the submitted work.
 
 \tableofcontents
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\clearpage
+\chapter*{Abbreviations}
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbreviations}
+\begin{tabularx}{\textwidth}{@{}L{0.20\textwidth}Y@{}}
+ARI & adjusted Rand index \\
+AUROC & area under the receiver operating characteristic curve \\
+CI & confidence interval \\
+IQR & interquartile range \\
+MAE & mean absolute error \\
+PHQ-4 & four-item Patient Health Questionnaire \\
+RAPIDS & Reproducible Analysis Pipeline for Data Streams \\
+RQ & research question \\
+SD & standard deviation \\
+\end{tabularx}
 \clearpage
 
 \pagenumbering{arabic}
@@ -196,15 +228,13 @@ two questions:
   controls?
 \end{enumerate}
 
-The work was not restricted to producing one positive model. It included baseline
-audits, robustness checks, negative tests, and stopping rules. This format
-matches the purpose of a research project report: the document explains the work
-performed, the decisions made, and the evidence supporting each conclusion.
+The analysis included strong-baseline audits, chronological prediction tests,
+construct controls, robustness checks, and a feasibility-based stopping rule.
 
 \section{Research questions}
 
-The final research questions were fixed for this report after the full project
-record and referee-driven audits were available.
+The following are retrospective synthesis questions, defined after the experimental
+programme and referee-driven audits.
 
 \begin{description}
   \item[\textbf{RQ1.}] \textbf{Psychological-label validity.} Does passive sensing improve
@@ -226,11 +256,10 @@ record and referee-driven audits were available.
 
 \section{Project objectives and decision status}
 
-\Cref{tab:objectives} states the objectives and their final status. ``Passed'' means
-that the recorded analysis satisfied its stated decision rule. ``Failed'' means the
-rule was evaluated and not met. ``Post-hoc'' marks analyses designed after inspection
-of earlier results. ``Stopped'' means an analysis ended at a feasibility gate before
-the intended model was fitted.
+\Cref{tab:objectives} summarizes the decision rules: \emph{passed} and
+\emph{failed} refer only to the stated project criterion, \emph{post-hoc} identifies
+analyses designed after earlier results, and \emph{stopped} denotes termination at a
+feasibility check before model fitting.
 
 \begin{table}[H]
 \centering
@@ -244,9 +273,9 @@ ID & Objective & Final status \\
 O1 & Audit psychological-label prediction against prior label history and
 construct overlap. & \passed\ (boundary established) \\
 O2 & Demonstrate chronological forecasting of directly observed behaviors. &
-\passed\ (measurement feasibility) \\
+\passed\ (mostly same-channel persistence) \\
 O3 & Validate scalar forecastability after model-artifact and construct controls. &
-\failed\ (variability-independent $r=0.230<0.30$) \\
+\failed\ (point estimate $r=0.230<0.30$; CI crosses gate) \\
 O4 & Test a continuous domain profile after stronger controls. & \exploratory\
 (internal lead only) \\
 O5 & Test cross-domain coupling and discrete behavioral types. & \failed \\
@@ -258,16 +287,16 @@ feasibility gate. & \stopped\ (no model run) \\
 
 \section{Deliverables and exclusions}
 
-The project deliverables are the analysis code, experiment definitions, aggregate
-outputs, claim-source map, reproducibility pipeline, and this report. The report is
+The project deliverables are the analysis code, experiment contracts, aggregate
+outputs, evidence ledger, reproducibility pipeline, and this report. The report is
 self-contained for the main conclusions, while the repository allows detailed
 inspection.
 
-The report excludes the Amber product direction, Android application, volume-control
-study, and phone-based single-person observations. Those activities address product
-or pilot questions and do not support the GLOBEM research conclusions. The separate
-personalization feasibility audit is included only because it records a scientific
-stopping decision for a proposed follow-up.
+The GLOBEM analyses form the primary evidence base. A separately scoped Android
+self-instrumentation pilot is documented in \cref{app:android-pilot} as an
+exploratory applied work package on baseline choice in a decision system. The
+separate personalization feasibility audit records the stopping decision for a
+proposed follow-up.
 
 \chapter{Background and Related Work}
 \label{ch:background}
@@ -366,15 +395,10 @@ uncertain cross-validation estimates \citep{varoquaux2018crossvalidation}. The
 project therefore used chronological splits, model-refitting checks, matched
 within-cohort permutations, bootstrap intervals, and leave-one-cohort-out tests.
 
-The literature leads to four operational requirements used in this project:
-
-\begin{enumerate}
-  \item compare passive psychological-label models with prior-label baselines;
-  \item forecast direct behavior prospectively rather than infer validity from
-  cross-sectional association;
-  \item test prediction-derived constructs against variability and regularity; and
-  \item distinguish pooled-model transferability from person-specific learnability.
-\end{enumerate}
+These studies motivate four requirements here: compare psychological-label models
+with prior-label baselines; forecast behavior prospectively; test prediction-derived
+constructs against variability and regularity; and distinguish pooled-model
+transferability from person-specific learnability.
 
 \chapter{Data and Reproducibility}
 \label{ch:data}
@@ -395,27 +419,42 @@ eligibility rules differ. \Cref{tab:samples} keeps these stages separate.
 
 \begin{table}[H]
 \centering
-\caption[Analysis stages and units]{Analysis stages and units. Counts are not interchangeable because each
-stage applies different preprocessing and coverage rules.}
+\caption[Analysis cohorts and eligibility]{Analysis cohorts and eligibility. RQ1
+and RQ3 are separate branches; disjoint refitting and known-single-year exclusion
+are parallel RQ3 sensitivities rather than successive exclusions.}
 \label{tab:samples}
-\begin{tabularx}{\textwidth}{@{}L{0.28\textwidth}L{0.22\textwidth}Y@{}}
+\begin{tabularx}{\textwidth}{@{}L{0.29\textwidth}L{0.17\textwidth}Y@{}}
 \toprule
-Analysis stage & Recorded size & Unit and use \\
+Stage & Recorded size & Eligibility and relation \\
 \midrule
-Published GLOBEM release & 705 person-years; 497 people & Dataset-level description
-from \citet{xu2022globem}. \\
-Label-baseline control & 5,213 train rows; 2,927 test rows; 697 released identifiers
-& Chronological depression-label classification. \\
-Frozen forecastability input & 120,936 prediction rows; 696 trajectories; 16 targets
-& Prospective tomorrow predictions selected from the larger behavior forecast. \\
-Original core split-half & 521 trajectories & Eight-domain scalar and profile tests. \\
-Disjoint-refit core split-half & 499 trajectories & Independently trained early and
-late models. \\
-Known-single-year sensitivity & 232 trajectories & Conservative exclusion of all
-repeat-candidate trajectories from the fixed-model core sample. \\
+Canonical daily table & 705 trajectories & Distinct institute-year/released-ID
+person-year keys. \\
+RQ1 label-baseline cohort & 697 trajectories & At least four weekly depression
+labels; separate branch from RQ3. \\
+RQ3 behavior-prediction input & 696 trajectories & At least 42 history days and an
+observed future direct-behavior target. \\
+Any RQ3 person-level score & 598 trajectories & Both prospective halves for at least
+one scope: six of eight core or ten of sixteen rich targets. \\
+Fixed/expanding core cohort & 521 trajectories & Both halves for at least six core
+targets. \\
+Disjoint-refit core sensitivity & 499 trajectories & Shorter non-overlapping blocks;
+22 core trajectories lost coverage. \\
+Known-single-year sensitivity & 232 trajectories & Core cohort after excluding 289
+repeat-candidate trajectories. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{agent2_sample_attrition_flow.png}
+\caption[Analysis-cohort flow and sensitivity branches]{Analysis-cohort flow. RQ1
+and RQ3 apply different eligibility rules and overlap on 693 trajectories; neither
+is nested in the other. Within RQ3, 521 trajectories form the primary core cohort.
+Disjoint refitting ($n=499$) and conservative removal of repeat candidates ($n=232$)
+are parallel sensitivities; their intersection contains 215 trajectories.}
+\label{fig:sample-attrition}
+\end{figure}
 
 \section{Behavioral and psychological variables}
 
@@ -436,6 +475,28 @@ same-day overlap. Several columns are derived or closely related representations
 including PHQ-4 variants. The results therefore quantify empirical overlap in the
 released analysis table, not ten independent diagnostic instruments.
 
+\subsection{Released depression-screening target}
+\label{sec:dep-target}
+
+RQ1 used the released binary column \texttt{dep} from
+\texttt{SurveyData/dep\_weekly.csv} without redefining it. This is a screening proxy,
+not a clinical diagnosis, and its construction is not identical across cohorts
+\citep{xu2022globem,xu2023globemphysionet}. In institute-years 2--4, weekly EMA
+observations were positive when the PHQ-4 total score exceeded 2, the release's
+threshold for at least mild symptoms. Institute-year 1 did not administer PHQ-4;
+the dataset authors instead transferred a depth-2 decision rule learned in year 2
+from the PANAS-style ``depressed'' and ``nervous'' items. That rule assigned a
+negative label only when depressed was below 2 and nervous was below 3 on their
+1--5 scales. The released weekly file also merges the end-term BDI-II screening
+observation, whose positive threshold is greater than 13.
+
+Consequently, \texttt{dep} is a cohort-dependent composite of weekly EMA screening
+and an end-term screening observation. The present analysis evaluates predictability
+of that released benchmark label; it does not re-estimate the instruments, harmonize
+their measurement properties, or infer diagnosed depression. In the frozen 65/35
+within-trajectory split, 2,367 of 5,213 training rows were positive (45.4\%) and
+1,395 of 2,927 test rows were positive (47.7\%).
+
 \section{Preprocessing and missing data}
 
 The analysis used released daily aggregates rather than raw sensor streams. Each
@@ -451,40 +512,35 @@ horizons were tomorrow and the following seven-day mean.
 
 \section{Cross-year identity boundary}
 
-Pinned GLOBEM overlap metadata listed 378 repeat-candidate trajectory keys. In the
-521-trajectory core sample, 289 were candidates and 232 were known single-year
-trajectories. The public release did not permit reconstruction of a complete person
-cluster. A person-cluster bootstrap was therefore not possible.
-
-The sensitivity analysis excluded all repeat candidates. It reduces the risk that a
-small set of known repeated users dominates the result. It does not prove stability
-within unique people across years. The report consequently uses ``within-trajectory''
-and ``person-year profile'' rather than ``stable person trait.''
+Pinned overlap metadata identified 378 repeat-candidate trajectory keys. Of the 521
+core trajectories, 289 were candidates and 232 were known single-year records. The
+release did not expose a complete cross-year person identifier, precluding a
+person-cluster bootstrap. A conservative sensitivity excluded every repeat candidate;
+accordingly, longitudinal claims use the units ``within trajectory'' and
+``person-year profile,'' not cross-year person-level stability.
 
 \section{Privacy and data access}
 
-This project is a secondary analysis of a de-identified research release.
+The primary project is a secondary analysis of a de-identified research release.
 Recruitment, consent, and institutional-review procedures are described in the
 GLOBEM publication \citep{xu2022globem}. This report does not claim a new ethics
 approval. No raw GLOBEM data or participant-level follow-up tables are copied into
-the report folder or submission repository.
+the report folder or submission repository. The supplementary pilot is
+self-observation by the author and includes no third-party participant. Its raw
+session logs and exact app identities remain private; only aggregate counts, metrics,
+contracts, and de-identified displays are used in the report package.
 
-\section{Repository and provenance}
-
-The repository contains only the experiments, aggregate results, and report sources
-used in this report. Machine-readable JSON and CSV files are authoritative for
-quantitative claims. The compact experiment record states analysis status and scope.
-
-Each report figure is generated by \path{make_figures.py} from aggregate outputs.
-The repository file \path{report/CLAIM_SOURCE_MAP.md} maps every headline value and display
-to its checked output. The report folder contains no restricted input data.
+Quantitative claims and figures trace to machine-readable CSV or JSON outputs through
+\path{CLAIM_SOURCE_MAP.md}. Figures are regenerated by \path{make_figures.py} from
+aggregate outputs, and the report package contains no restricted participant-level
+input data.
 
 \chapter{Project Method}
 \label{ch:method}
 
 \section{Staged experimental design}
 
-The project proceeded in six stages:
+The project proceeded in seven stages:
 
 \begin{enumerate}
   \item establish passive-sensing and history baselines;
@@ -492,13 +548,15 @@ The project proceeded in six stages:
   overlap;
   \item forecast direct behavior prospectively;
   \item define and test scalar and profile measures of forecast performance;
-  \item run construct, model-refitting, mechanism, and typology controls; and
-  \item freeze a separate personalization design and stop it if feasibility failed.
+  \item run construct, model-refitting, mechanism, and typology controls;
+  \item freeze a separate personalization design and stop it if feasibility failed;
+  and
+  \item instrument and audit a separate single-user Android decision pilot.
 \end{enumerate}
 
-This order matters for interpretation. Early results motivated later checks. The
-later checks changed the status of the scalar forecastability claim. The report uses
-the final status rather than preserving an obsolete positive conclusion.
+Early results motivated later construct checks, which attributed most scalar
+forecastability stability to behavioral variance and changed the scientific
+interpretation of that score.
 
 \section{Chronological evaluation}
 
@@ -524,14 +582,28 @@ Random-forest depression classifiers compared five feature sets:
   \item passive history plus prior-label rate.
 \end{enumerate}
 
-The primary metric was held-out AUROC. The incremental question was directional:
-did either combined model exceed the label-only model? A lower combined AUROC is
-reported as no positive increment, not as a small improvement.
+The primary metric was held-out AUROC. For the two combined-versus-label-only
+contrasts, uncertainty was estimated by a paired 10,000-draw bootstrap over 697
+released person-year trajectories; every sampled trajectory contributed all of its
+test rows. A 95\% interval containing zero was defined as no detectable increment.
+
+A within-person ranking test then retained only test trajectories containing both
+depression-label classes. AUROC was computed inside each trajectory and averaged
+equally across trajectories; a trajectory-constant predictor therefore scores 0.5
+and cannot benefit from between-person prevalence. The primary rule required the
+history-plus-prior mean AUROC to reach 0.55 with a trajectory-bootstrap interval
+entirely above 0.5. A post-hoc design diagnostic conditioned on the observed positive
+and negative row counts and simulated common binormal ranking effects. It quantified
+the sensitivity of the aggregate mean, while the short trajectories remained
+insufficient for person-specific performance estimates. A separate robustness grid
+crossed three temporal test fractions with three random-forest initializations.
 
 For construct overlap, all possible same-day pairs among ten repeated psychological
-columns were examined. Ridge models then predicted each target using its own prior,
-other constructs' priors, or both. These models quantify overlap and persistence.
-They are not passive-sensing models.
+columns were examined. The primary sensitivity excluded comparisons among four
+PHQ-derived representations and required at least 100 same-day observations per
+pair. Ridge models then predicted each target using its own prior, other constructs'
+priors, or both. These models quantify overlap and persistence. They are not
+passive-sensing models.
 
 \section{Prospective behavior forecasting}
 
@@ -541,9 +613,9 @@ plus fingerprint; and history plus fingerprint plus partial-day behavior. Contin
 targets used ridge regression. Binary high/low targets used logistic regression.
 
 The models were pooled across eligible training rows. They were not fitted separately
-for each person-year trajectory. Mean held-out $R^2$ and AUROC were summarized across
-16 heterogeneous targets. The means do not represent one task and have no common
-confidence interval in the recorded summary.
+for each person-year trajectory. Held-out $R^2$ and AUROC were summarized across 16
+heterogeneous targets using both means and median/IQR. Neither summary represents
+one task, so per-target values are retained in the appendix.
 
 \section{Model implementation}
 
@@ -556,41 +628,38 @@ treated as an immutable parameter.
 \begin{table}[H]
 \centering
 \footnotesize
-\caption[Headline model implementation]{Headline model implementation and explicit configuration. All scaling and
-imputation statistics were fitted on training rows.}
+\caption[Headline model implementation]{Headline model implementation and explicit
+configuration. All scaling and imputation statistics were fitted on training rows.
+Exact runners and checked outputs are listed in \cref{app:work-packages}.}
 \label{tab:model-config}
-\begin{tabularx}{\textwidth}{@{}L{0.18\textwidth}L{0.28\textwidth}Y@{}}
+\begin{tabularx}{\textwidth}{@{}L{0.20\textwidth}L{0.22\textwidth}Y@{}}
 \toprule
-Stage & Runner & Essential settings \\
+Stage & Estimator & Essential settings \\
 \midrule
-Depression-label audit & \path{experiments/run_label_baseline_control.py} & Median
-imputation; random forest with 300 trees, minimum leaf size 5, balanced class
-weights, seed 42, and all CPU cores. No feature scaling. \\
-Construct-prior audit & \path{experiments/run_construct_fragility_audit.py} & Training
-median imputation and standardization; closed-form ridge with $\alpha=10$;
-unpenalized intercept; 65/35 within-trajectory temporal split. \\
-Behavior forecast & \path{experiments/run_behavioural_weather_forecast.py} & Median
-imputation and standardization. Regression: ridge $\alpha=1$. Classification:
-balanced logistic regression, \texttt{liblinear}, 1,000 iterations, seed 42; L2
-penalty and $C=1$ are scikit-learn defaults not overridden by the runner. \\
-Forecastability refits & \path{experiments/run_referee_robustness_checks.py} &
-Custom median-imputed, standardized ridge with $\alpha=1$; fixed, expanding, and
-disjoint temporal regimes; 1,000 bootstraps; 10,000 headline permutations; seed
-240719. \\
-Mechanism follow-up & \path{experiments/run_structure_mechanism_followup.py} &
-Same custom ridge with $\alpha=1$; 1,000 bootstraps; 10,000 headline permutations;
-seed 211. \\
-Typology follow-up & \path{experiments/run_profile_typology_followup.py} &
-Spherical $k$-means, $k=2,\ldots,5$, 30 initializations and 100 iterations per
-fold, leave-one-cohort-out assignment, 500 permutations, seed 307. \\
+Depression-label audit & Random-forest classifier & Median imputation; 300 trees;
+minimum leaf size 5; balanced class weights; all CPU cores; no feature scaling. \\
+Construct-prior audit & Closed-form ridge regression & Training-median imputation
+and standardization; $\alpha=10$; unpenalized intercept; 65/35 within-trajectory
+temporal split. \\
+Behavior forecast & Ridge and logistic regression & Training-median imputation and
+standardization. Regression used ridge with $\alpha=1$. Classification used balanced
+logistic regression with \texttt{liblinear}, 1,000 iterations, and the non-overridden
+scikit-learn defaults L2 penalty and $C=1$. \\
+Forecastability refits & Custom ridge regression & Median imputation,
+standardization, $\alpha=1$, fixed/expanding/disjoint temporal regimes, 1,000
+bootstrap draws, and 10,000 headline permutations. \\
+Mechanism follow-up & Custom ridge regression & Same estimator with $\alpha=1$,
+1,000 bootstrap draws, and 10,000 headline permutations. \\
+Typology follow-up & Spherical $k$-means & $k=2,\ldots,5$; 30 initializations; 100
+iterations per fold; leave-one-cohort-out assignment; 500 permutations. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Forecastability and relative history benefit}
+\section{Initial and corrected operationalizations of forecastability}
 
-For trajectory $u$, target $k$, and held-out half $h$, absolute forecastability was
-defined as normalized negative mean absolute error:
+The initial analysis operationalized forecastability for trajectory $u$, target
+$k$, and held-out half $h$ as global-SD-normalized negative mean absolute error:
 
 \begin{equation}
 F_{ukh}=-\frac{1}{\sigma_k}\frac{1}{|I_{ukh}|}
@@ -599,9 +668,14 @@ F_{ukh}=-\frac{1}{\sigma_k}\frac{1}{|I_{ukh}|}
 \end{equation}
 
 where $\sigma_k$ is the target's global log-scale standard deviation. Higher values
-mean lower error. This score was the basis of the original scalar claim.
+mean lower absolute error. This estimator was reproducible enough to support the
+initial analysis, but it was mis-specified for the intended person-relative
+construct. Its denominator is constant across trajectories within a target: it
+neither adjusts for person-level outcome scale nor asks whether history improves on
+a relevant comparator. Equation~\ref{eq:forecastability} is retained as the audited
+historical operationalization, not as a validated forecastability phenotype.
 
-Relative history benefit was defined as
+The corrected comparator-relative operationalization was
 
 \begin{equation}
 S_{ukh}=1-\frac{\mathrm{MAE}^{\mathrm{hist}}_{ukh}}
@@ -609,19 +683,22 @@ S_{ukh}=1-\frac{\mathrm{MAE}^{\mathrm{hist}}_{ukh}}
 \label{eq:skill}
 \end{equation}
 
-The numerator and denominator use pooled models. $S$ measures where the pooled
-history mapping transfers better than the pooled calendar mapping. It is
-comparator-dependent and not a measure of separately fitted personal-model skill.
+Both errors are evaluated for the same trajectory, target, and held-out half. $S$
+asks how much the pooled history model improves on the pooled calendar model in that
+context. It corrects the absence of a comparator in
+Equation~\ref{eq:forecastability}, but remains sensitive to the calendar model,
+denominator error, marginal entropy, and population-average coefficients. It is not
+a measure of separately fitted personal-model skill.
 
 Target-half measures were standardized within target. Equal-weight averages formed
 scalar degree scores. Cross-target vectors formed continuous domain profiles.
 Profile similarity used cosine similarity.
 
-\section{Internally recorded gates}
+\section{Decision rules and provenance}
 
-The original project record specified three gates before the full inferential run.
-The repository did not contain an independently timestamped prospective commit, so
-these gates are not described as preregistered.
+The project record specified three decision rules before the corresponding full
+inferential run. Because that record lacks an independent prospective timestamp,
+the rules organize the internal analysis but are not presented as preregistration.
 
 \begin{itemize}
   \item \textbf{H1 scalar stability:} early/late Pearson $r\geq0.30$ with a
@@ -633,8 +710,12 @@ these gates are not described as preregistered.
   has $|r|\geq0.10$ and max-statistic permutation $p<0.05$.
 \end{itemize}
 
-The 0.30 and 0.10 thresholds are project decision rules. They are not universal
-psychometric standards.
+The numeric thresholds are project-specific rather than universal psychometric
+standards. The H1 rule was statistically suboptimal: it applied the practical
+threshold to the point estimate while testing the confidence bound only against
+zero. The historical decision is retained for transparency, but an interval spanning
+0.30 is inconclusive about whether the population effect meets that value. A future
+confirmatory analysis should test uncertainty against the practical threshold.
 
 \section{Model-artifact and construct controls}
 
@@ -658,16 +739,27 @@ not theoretical entropy-rate ceilings.
 
 \section{Uncertainty and multiplicity}
 
+RQ1 incremental uncertainty used a paired 10,000-draw trajectory-clustered
+bootstrap. The within-person test also used 10,000 trajectory bootstrap draws after
+restricting evaluation to trajectories with both label classes. These resampling
+procedures preserve repeated observations inside released person-year trajectories;
+they do not reconstruct unavailable cross-year identities.
+
 Split-half correlations used 1,000 trajectory bootstrap samples. Matched profile
 contrasts used within-cohort permutations with finite-sample correction. Headline
-residual profiles used 10,000 permutations. Their minimum reported probability is
-$p=0.0001$, rounded in prose as $p<0.001$. Secondary feature-family and original
+residual profiles used 10,000 permutations and are reported as $p<0.001$ when they
+reached the resampling resolution. Secondary feature-family and original
 profile tests used 500 permutations; their resolution floor is $p=0.002$.
 
 The H3 trait test used corrected inference. A later Fisher-$z$ approximation estimated
-an 80\% minimum detectable absolute correlation of about 0.172 under a conservative
+an 80\% minimum detectable absolute correlation of about 0.17 under a conservative
 28-test Bonferroni approximation. This was larger than the 0.10 effect gate, so a
 failed H3 is treated as inconclusive rather than evidence of independence.
+
+Feature-family decomposition and mechanism tables are explicitly post-hoc. Their
+individual permutation probabilities were not adjusted to support family-wise
+confirmatory inference; the report therefore treats them as robustness leads rather
+than independent discoveries.
 
 \section{Mechanism and typology follow-up}
 
@@ -683,7 +775,8 @@ typology used spherical $k$-means for $k=2$ through $5$. Clusters were trained o
 three cohorts and tested without refitting in the fourth. The typology gate required
 median adjusted Rand index (ARI) above 0.20, sufficient prevalence, and successful
 assignment stability in at least three held-out cohorts, including under disjoint
-refitting.
+refitting. With only four cohorts, this is a coarse four-trial stress test rather
+than strong external validation.
 
 \section{Personalization feasibility gate}
 
@@ -697,10 +790,15 @@ outcomes.
 \section{Implemented work packages}
 \label{sec:implementation}
 
-\Cref{tab:work-packages-main} summarizes the report analyses. The sequence moved from
-strong baselines to direct behavioral targets, then to construct controls and
-bounded follow-up tests. This kept model complexity secondary to target and construct
-validity.
+\Cref{tab:work-packages-main} summarizes the project sequence. On the same 196
+RAPIDS history features and outer splits, the hygienically validated MLP achieved
+AUROC 0.619 within user and 0.559 on held-out users, compared with 0.691 and 0.577
+for the random forest. A legacy LSTM on a different raw 14-day sequence reached
+0.622 and 0.553; because its input and retained validation evidence differ, it is
+context rather than a matched comparison. Full model metrics and validation scope
+are reported in \cref{app:neural-diagnostics}. Subsequent analyses therefore focused
+on target validity and strong non-sensor comparators rather than increasing neural
+capacity.
 
 \begin{table}[H]
 \centering
@@ -712,25 +810,31 @@ output paths are retained in \cref{app:work-packages} and the repository source 
 \toprule
 WP & Work performed & Decisive outcome & Status \\
 \midrule
-1 & Label-history and construct audit & Label-only AUROC 0.844 exceeded both
-combined models; repeated outcomes overlapped. & Primary boundary \\
-2 & Prospective behavior forecast & Direct behaviors were forecastable across 16
-targets under pooled chronological models. & \passed \\
-3 & Forecastability construct audit & Raw stability survived refitting but was
-largely variability; adjusted $r=0.230<0.30$. & \failed \\
-4 & Post-hoc structure and typology & Continuous profile survived tested controls;
+1 & Baseline and model exploration & The matched-input MLP remained below the
+history RF; a differently specified legacy LSTM was also lower. &
+Mixed/null \\
+2 & Label-history and construct audit & No detectable passive increment in clustered
+or within-person tests; cross-family outcomes overlapped. & Primary boundary \\
+3 & Prospective behavior forecast & Direct behaviors were forecastable across 16
+targets, with most performance supplied by simple same-channel history. & \passed \\
+4 & Forecastability construct audit & Raw stability survived refitting but was
+largely variability; adjusted point estimate $r=0.230<0.30$ while its CI crossed
+the gate. & \failed \\
+5 & Post-hoc structure and typology & Continuous profile survived tested controls;
 cross-domain increment and discrete typology failed. & \exploratory/mixed \\
-5 & Personalization feasibility & Outcome-blind eligibility left no allowed
+6 & Personalization feasibility & Outcome-blind eligibility left no allowed
 multi-family branch; no model was fitted. & \stopped \\
+7 & Android self-instrumentation pilot & Custom logger, provenance freeze, and
+chronological policy audit on the author's own data; observed policies were worse
+than no action. & \exploratory/\failed \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The original forecastability run had passed its raw scalar and profile gates. The
-later construct audit materially changed that interpretation, so the final status in
-this report supersedes the earlier positive label. The personalization review, in
-contrast, accepted only the reproducibility of a stopping record; it did not assess a
-prediction effect.
+The original forecastability run passed its raw scalar and profile criteria, but the
+later construct audit attributed most scalar stability to behavioral variance. The
+separate personalization audit stopped before outcomes were examined and did not
+estimate a prediction effect.
 
 \chapter{Results}
 \label{ch:results}
@@ -739,33 +843,40 @@ prediction effect.
 
 \subsection{Prior labels exceeded passive models}
 
+The target was the released cohort-dependent depression-screening proxy defined in
+\cref{sec:dep-target}. The chronological split contained 5,213 training observations
+(2,367 positive; 45.4\%) and 2,927 test observations (1,395 positive; 47.7\%).
 Current-day passive features achieved AUROC 0.579. Passive history achieved 0.691.
 The prior same-person label rate alone achieved 0.844. Current-day features plus the
 label rate achieved 0.840, and passive history plus the label rate achieved 0.841.
 Both combined models were lower than the label-only baseline
 (\cref{fig:validity-auroc,tab:label-results}). There was no positive increment beyond
-label history.
+label history at the point-estimate level.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{validity_boundary_auroc.png}
-\caption[Depression-label AUROC with and without label history]{Held-out depression-label AUROC in the chronological label-baseline
-control. The analysis used 5,213 training rows and 2,927 test rows at this pipeline
-stage. The label-only baseline scored 0.844. Current-day plus label and history plus
-label scored 0.840 and 0.841, respectively, and did not improve on label-only. The
-prior-label feature is a self-report persistence/prevalence baseline, not a passive
-sensing model.}
+\caption[Depression-screening-label AUROC with and without label history]{Held-out AUROC for the released depression-screening proxy in the chronological
+label-baseline control. The analysis used 5,213 training rows (45.4\% positive) and
+2,927 test rows (47.7\% positive). The label-only baseline scored 0.844. Current-day plus label and history plus
+label scored 0.840 and 0.841, respectively. Their clustered increment intervals
+included zero, yielding no detectable increment over label-only. The prior-label
+feature is a self-report persistence/prevalence baseline, not a passive sensing
+model.}
 \label{fig:validity-auroc}
 \end{figure}
 
 \begin{table}[H]
 \centering
-\caption[Depression-label classification results]{Depression-label classification results. Differences are calculated
-against the unrounded label-only AUROC of 0.844428.}
+\caption[Depression-screening-label classification results]{Classification of the
+released depression-screening proxy. The 5,213/2,927 chronological train/test rows
+were 45.4\%/47.7\% positive. Differences were calculated from unrounded outputs and
+are shown to three decimals.}
 \label{tab:label-results}
-\begin{tabularx}{\textwidth}{@{}X S[table-format=1.3] S[table-format=-1.3] l@{}}
+\begin{tabularx}{\textwidth}{@{}Y S[table-format=1.3]
+S[table-format=-1.3] L{0.24\textwidth}@{}}
 \toprule
-Feature set & {AUROC} & {Difference vs. label-only} & Interpretation \\
+Feature set & {AUROC} & {\makecell{Difference vs.\\label-only}} & Interpretation \\
 \midrule
 Current-day passive & 0.579 & -0.266 & Passive-only \\
 Passive history & 0.691 & -0.154 & Passive-only \\
@@ -776,27 +887,87 @@ Passive history + prior label & 0.841 & -0.003 & No positive increment \\
 \end{tabularx}
 \end{table}
 
-This comparison is cohort- and split-specific. It does not show that passive sensing
-can never add value. It shows that the tested passive features did not improve on a
-strong label-history baseline in this GLOBEM analysis.
+The published GLOBEM benchmark provides context but not a like-for-like
+reproduction. In the authors' ``Users Past/Future within One Dataset'' setup, the
+first 80\% of each user's observations trained a model and the final 20\% tested it
+within each dataset \citep{xu2022globem}. Its headline
+$0.691\mathbin{\pm}0.018$ for Xu et al.-I is balanced accuracy, whereas 0.691 here
+is pooled ROC AUROC; the corresponding published mean ROC AUC was 0.737. On matched
+metric names, the present passive-history model was descriptively lower (balanced
+accuracy 0.642 versus 0.691; ROC AUROC 0.691 versus 0.737). The evaluations are not
+exchangeable: this study used a pooled 65/35 split, 7/14-day screen, step, and sleep
+history, and a fixed random forest, whereas Xu et al.-I used separate per-dataset
+80/20 splits, a broader multi-epoch feature pipeline, association-rule filtering,
+and AdaBoost. The comparison anchors model strength without claiming a failed
+reproduction.
+
+Paired trajectory-clustered inference supported the same, narrower conclusion
+(\cref{tab:rq1-clustered}). The current-day contrast was $-0.004$ with 95\%
+interval $[-0.013,0.005]$; the history contrast was $-0.003$ with interval
+$[-0.013,0.007]$. Both intervals contain zero, so the result is no detectable
+increment, not proof that the true effects are exactly zero or negative.
+
+\begin{table}[H]
+\centering
+\small
+\caption[RQ1 trajectory-clustered inference]{Paired held-out AUROC differences
+versus the prior-label-rate-only baseline. Intervals use 10,000 bootstrap resamples
+of 697 released person-year trajectories and retain all rows within each sampled
+trajectory.}
+\label{tab:rq1-clustered}
+\begin{tabularx}{\textwidth}{@{}L{0.34\textwidth}C{0.12\textwidth}
+C{0.22\textwidth}Y@{}}
+\toprule
+Combined model & $\Delta$ AUROC & 95\% clustered CI & Decision \\
+\midrule
+Current-day passive + prior label & -0.004 & $[-0.013,0.005]$ & No detectable increment \\
+Passive history + prior label & -0.003 & $[-0.013,0.007]$ & No detectable increment \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The within-person analysis retained 295 trajectories and 1,295 test rows with both
+label classes. The primary history-plus-prior model achieved an equal-weight mean
+within-trajectory AUROC of 0.514 (95\% CI $[0.474,0.556]$); the pair-weighted value
+was 0.522. Current-day-plus-prior reached 0.534 (95\% CI $[0.494,0.575]$).
+
+Individual trajectories were sparse: the median was four test rows (IQR 4--5) and
+three positive-negative pairs (IQR 3--4). A post-hoc simulation preserving these
+class counts estimated 80\% power for a common AUROC between 0.55 and 0.56, or
+between 0.56 and 0.57 for the complete rule that also required a point estimate of
+at least 0.55. Thus the aggregate analysis did not detect a moderate shared ranking
+effect, but it cannot exclude subtle or heterogeneous effects and cannot estimate
+usefulness for an individual user.
+
+The post-hoc split/seed grid reinforced this boundary. Current-day-plus-prior and
+history-plus-prior were below prior-only in all nine combinations. Median differences
+were $-0.013$ (range $-0.015$ to $-0.004$) and $-0.004$ (range $-0.012$ to
+$-0.001$), respectively.
+
+These results apply to the tested GLOBEM cohort, depression target, feature sets, and
+model class. Within that scope, passive sensing supplied neither a detectable
+aggregate increment over label history nor a detectable moderate shared
+within-trajectory ranking effect.
 
 \subsection{Psychological measures overlapped}
 
 The construct audit contained 17,346 rows with at least one psychological measure.
-Among the 29 finite estimates from 45 possible same-day pairs, the median absolute
-Pearson correlation was 0.663. \Cref{fig:construct-overlap} shows both the strong
-correlations and the missing pair estimates caused by absent or insufficient
-same-day overlap.
+The full released-column summary had 29 finite estimates from 45 possible same-day
+pairs and median absolute Pearson correlation 0.663 (IQR 0.532--0.793). That number
+mixes distinct constructs with redundant PHQ-derived representations. After
+excluding within-PHQ-family comparisons and requiring at least 100 same-day rows,
+22 cross-family pairs remained; their median absolute correlation was 0.590 (IQR
+0.251--0.722). \Cref{fig:construct-overlap} shows the individual estimates and
+missing comparisons.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.92\textwidth]{construct_overlap_heatmap.png}
 \caption[Same-day correlation among repeated psychological measures]{Same-day Pearson correlation among ten repeated psychological columns.
 Gray cells have no finite estimate because same-day overlap was absent or
-insufficient. The median absolute correlation was 0.663 among 29 finite pairwise
-estimates from 45 possible pairs. Several columns are derived or closely related
-PHQ-4 representations, so the figure documents empirical overlap rather than ten
-independent diagnostic constructs.}
+insufficient. Across all 29 finite pairs, the mixed median absolute correlation was
+0.663. The primary nonredundant sensitivity used 22 cross-family pairs with at least
+100 observations and had median 0.590 (IQR 0.251--0.722).}
 \label{fig:construct-overlap}
 \end{figure}
 
@@ -807,47 +978,67 @@ own-prior prediction on average. No formal equivalence test was performed.
 
 \section{RQ2: directly observed behavior was forecastable}
 
-Across 16 targets, the full evening model achieved mean held-out $R^2=0.272$ and
-AUROC 0.788 for tomorrow. For the following seven-day aggregate, the corresponding
-means were $R^2=0.506$ and AUROC 0.871
-(\cref{fig:behavior-performance,tab:behavior-results}). These are means across
-heterogeneous tasks and not the performance of one target.
+Across 16 targets, the full evening model achieved median held-out tomorrow
+$R^2=0.260$ (IQR 0.225--0.323) and AUROC 0.795 (IQR 0.730--0.830). Means were
+0.272 and 0.788. For the following seven-day aggregate, medians were $R^2=0.579$
+(IQR 0.408--0.657) and AUROC 0.875 (IQR 0.829--0.920); means were 0.506 and
+0.871 (\cref{fig:behavior-performance,tab:behavior-results,tab:rq2-per-target}).
+These summaries span heterogeneous tasks and are not the performance of one target.
+
+The baseline hierarchy materially changes the interpretation. Calendar-only models
+had mean tomorrow $R^2=-0.007$ and AUROC 0.544. Adding calendar terms, yesterday's
+outcome, and 7/14-day means (the recent-history comparator) raised performance to
+$R^2=0.244$ and AUROC 0.767. A calendar-plus-42-day mean/standard-deviation baseline
+reached 0.252 and 0.777. Combining recent and 42-day history reached 0.259 and 0.782;
+the current partial day supplied only the final 0.013 $R^2$ and 0.006 AUROC. The
+seven-day horizon followed the same ordering. Thus the supported result is mostly
+same-channel behavioral persistence, with small average increments from multiscale
+combination and the partial day.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{behavior_forecasting_performance.png}
-\caption[Prospective behavior forecasting across 16 targets]{Prospective performance averaged across 16 behavioral targets for the
-evening issue time. Blue bars use pooled calendar, recent-history, and 42-day
-fingerprint terms. Orange bars also include current partial-day behavior. Continuous
-targets use held-out $R^2$; high/low targets use held-out AUROC. No common confidence
-interval is available for these target means.}
+\caption[Prospective behavior forecasting against simple baselines]{Prospective performance averaged across 16 behavioral targets at the evening issue
+time. Calendar-only models are followed by recent history (calendar, yesterday, and
+7/14-day means), the 42-day baseline (calendar, 42-day mean and standard deviation),
+and the complete history/fingerprint/partial-day model. Continuous targets use
+held-out $R^2$; high/low targets use held-out AUROC. No common confidence interval is
+available for these heterogeneous target means.}
 \label{fig:behavior-performance}
 \end{figure}
 
 \begin{table}[H]
 \centering
-\caption[Aggregate behavior forecast at the evening issue time]{Aggregate behavior forecast at the evening issue time. ``Lift'' is the
-difference after adding the current partial day to history plus fingerprint.}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption[Behavior-forecast baseline hierarchy]{Mean held-out behavior-forecast
+performance across 16 targets at the evening issue time. Recent history contains
+calendar terms, yesterday, and 7/14-day means. The 42-day baseline contains calendar
+terms plus the 42-day mean and standard deviation. Median/IQR and full-model
+per-target values are reported in the text and appendix.}
 \label{tab:behavior-results}
-\begin{tabular}{@{}llSSS@{}}
+\begin{tabular}{@{}llSSSSS@{}}
 \toprule
-Horizon & Metric & {History + fingerprint} & {+ partial day} & {Lift} \\
+Horizon & Metric & {Calendar} & {\makecell{Recent\\history}} &
+{\makecell{42-day\\baseline}} & {\makecell{History +\\42-day}} &
+{\makecell{+ partial\\day}} \\
 \midrule
-Tomorrow & $R^2$ & 0.259 & 0.272 & 0.013 \\
-Tomorrow & AUROC & 0.782 & 0.788 & 0.006 \\
-Seven-day mean & $R^2$ & 0.501 & 0.506 & 0.005 \\
-Seven-day mean & AUROC & 0.869 & 0.871 & 0.002 \\
+Tomorrow & $R^2$ & -0.007 & 0.244 & 0.252 & 0.259 & 0.272 \\
+Tomorrow & AUROC & 0.544 & 0.767 & 0.777 & 0.782 & 0.788 \\
+Seven-day mean & $R^2$ & -0.018 & 0.461 & 0.503 & 0.501 & 0.506 \\
+Seven-day mean & AUROC & 0.551 & 0.851 & 0.867 & 0.869 & 0.871 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Most aggregate performance existed before adding the partial day. The result shows
-prospective continuity in observed behavior under pooled models. It does not establish
-psychological-state prediction, causal relationships, or personal-model learning.
+Because most performance was present in the target's own history, RQ2 establishes
+prospective continuity in directly observed behavior under pooled models. It does
+not establish that a high-dimensional cross-channel fingerprint is necessary, and
+it is not person-specific learning.
 
-\section{RQ3: scalar forecastability failed construct validation}
+\section{RQ3: correcting the forecastability operationalization}
 
-\subsection{Raw stability survived model refitting}
+\subsection{Raw error stability survived model refitting}
 
 The original fixed-model scalar correlation was $r=0.412$ with a bootstrap 95\%
 interval of $[0.316,0.501]$ for 521 trajectories. Expanding refitting produced
@@ -858,21 +1049,24 @@ Shared coefficients did not fully explain the raw association.
 The raw domain-profile advantage also persisted: $\Delta=0.287$ in the original
 fixed analysis ($p=0.002$, 500 permutations), $\Delta=0.280$ under expanding
 refitting, and $\Delta=0.266$ under disjoint refitting (both $p<0.001$, 10,000
-permutations). These checks address model reuse. They do not establish construct
-validity.
+permutations). Shared fitted coefficients therefore did not fully explain the raw
+association.
 
-\subsection{Variability explained the scalar result}
+\subsection{Construct validation rejected the initial operationalization}
 
-At the person-average composite level, raw absolute forecastability correlated
-$r=-0.912$ with observed behavioral standard deviation. The Spearman correlation
-was $-0.909$. The score was therefore almost an inverse-variability measure under
-this implementation.
+At the person-average composite level, the initial score in
+Equation~\ref{eq:forecastability} correlated $r=-0.912$ with observed behavioral
+standard deviation (Spearman $r=-0.909$). Because its denominator is global rather
+than person-relative, the score primarily rewarded trajectories whose outcomes
+varied less. The proposed scalar therefore failed discriminant validity and is
+treated as a mis-specified operationalization rather than a newly discovered trait.
 
 After standard-deviation and marginal-entropy adjustment, fixed-model split-half
-stability fell to $r=0.230$ with interval $[0.049,0.409]$. It did not meet the
-internally recorded 0.30 H1 gate. The corresponding expanding and disjoint values
-were 0.239 and 0.198. \Cref{fig:construct-audit,tab:construct-audit} reports the
-complete comparison.
+stability was $r=0.230$ with a 95\% interval of $[0.049,0.409]$. The point estimate
+failed the project criterion of 0.30, while the interval remained inconclusive about
+whether the population correlation meets that value. Expanding and disjoint point
+estimates were 0.239 and 0.198. \Cref{fig:construct-audit,tab:construct-audit}
+report the complete comparison.
 
 \begin{figure}[H]
 \centering
@@ -881,7 +1075,7 @@ complete comparison.
 521 trajectories in fixed and expanding regimes and 499 in the disjoint regime;
 error bars are trajectory-bootstrap 95\% intervals. Profile advantage is the
 same-minus-matched-cross early/late cosine difference. The magenta lines show the
-internally recorded 0.30 scalar gate and the 0.10 profile gate. Adjusted rows control
+project-specific 0.30 scalar criterion and 0.10 profile criterion. Adjusted rows control
 test-window target standard deviation and marginal quintile entropy. Profile tests
 used 10,000 permutations and had $p<0.001$.}
 \label{fig:construct-audit}
@@ -889,18 +1083,16 @@ used 10,000 permutations and had $p<0.001$.}
 
 \begin{table}[H]
 \centering
-\caption[Core construct-audit results]{Core construct-audit results. The adjusted absolute-error scalar fails the
+\caption[Core construct-audit results]{Core construct-audit results. The adjusted absolute-error point estimate fails the
 0.30 gate in every regime. Relative history benefit is model-relative and remains
-subject to the stronger controls in \cref{tab:stronger-controls}. The fixed raw
-confidence interval is from the robustness rerun; the frozen original run reported
-$[0.316,0.501]$.}
+subject to the stronger controls in \cref{tab:stronger-controls}.}
 \label{tab:construct-audit}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llS[table-format=1.3]lS[table-format=1.3]l@{}}
 \toprule
 Measure & Regime & {Degree $r$} & 95\% CI & {Profile $\Delta$} & Status \\
 \midrule
-Absolute error, raw & Fixed & 0.412 & [0.319, 0.507] & 0.287 & Raw gate met \\
+Absolute error, raw & Fixed & 0.412 & [0.316, 0.501] & 0.287 & Raw gate met \\
  & Expanding & 0.407 & [0.307, 0.496] & 0.280 & Raw gate met \\
  & Disjoint & 0.322 & [0.219, 0.414] & 0.266 & Raw gate met \\
 \addlinespace
@@ -915,10 +1107,19 @@ History benefit, SD/entropy adjusted & Fixed & 0.336 & [0.259, 0.418] & 0.362 & 
 \end{tabular}}
 \end{table}
 
-The correct conclusion is direct: the stable component of raw forecastability is
-largely stable behavioral variability. The positive residual correlation does not
-rescue the scalar claim because it failed its own threshold. The original scalar
-phenotype interpretation did not survive.
+The construct audit is a specification correction rather than a rescue of the
+initial scalar. Global-SD-normalized absolute error mainly measured stable behavioral
+variability, so it should not be named a distinct forecastability phenotype. The
+positive residual association is compatible with a smaller remaining signal, but it
+neither met the historical point-estimate rule nor isolated a distinct construct.
+
+Equation~\ref{eq:skill} is the preferable operationalization for asking whether
+history helps relative to a calendar comparator. Under SD/entropy adjustment its
+scalar correlations were 0.336, 0.317, and 0.405 across fixed, expanding, and
+disjoint regimes. Those estimates do not validate $S$ as a trait: stronger
+training-window and sequence controls attenuated the scalar, and the measure remains
+comparator-dependent. Only its continuous cross-domain profile is retained as a
+post-hoc lead.
 
 \subsection{The continuous profile remained a post-hoc lead}
 
@@ -956,10 +1157,17 @@ Sequence-order proxies & 0.314 & 0.308 & 0.202 & \exploratory \\
 \end{tabular}}
 \end{table}
 
-This is the surviving secondary result. It is a continuous within-trajectory profile
+The identity sensitivity excluded every trajectory flagged as a
+possible cross-year repeat. For the core, standard-deviation/entropy-adjusted
+history-benefit profile, 232 fixed and expanding trajectories and 215 disjoint
+trajectories remained. Same-minus-matched-cross profile advantages were 0.338,
+0.333, and 0.242, respectively (all $p=0.002$, 500 permutations). This conservative
+exclusion shows that known repeat candidates did not drive the result, while the
+missing cross-year identifier still limits the unit to a person-year trajectory.
+
+The surviving secondary result is therefore a continuous within-trajectory profile
 of where pooled history features transfer relative to pooled calendar features. It
-has not been replicated in a second dataset. It is not evidence of idiographic
-learnability or a stable person-level trait.
+requires replication with recoverable identities and independent data.
 
 \section{RQ4: mechanism, typology, and feasibility}
 
@@ -1043,7 +1251,7 @@ H3. The test had limited sensitivity for effects near the 0.10 gate, so the resu
 \inconclusive. It does not establish independence from personality.
 
 The common-distress follow-up was post-hoc and cross-sectional. The original
-controlled estimate was $r=-0.178$ for 518 trajectories. Direct target-standard-
+controlled estimate was $r=-0.178$ for 518 trajectories. Direct target standard
 deviation control gave $r=-0.140$, with cohort values ranging from approximately
 0.008 to $-0.342$. Because the estimates were heterogeneous and unreplicated, they
 are excluded from the abstract and central conclusion.
@@ -1053,15 +1261,16 @@ are excluded from the abstract and central conclusion.
 
 \section{Evaluation against the research questions}
 
-RQ1 established the project's primary validity boundary: in this GLOBEM comparison,
-passive features did not improve the depression label beyond label history, and the
-repeated outcomes overlapped substantially. RQ2 passed as measurement feasibility:
-direct behavior was forecastable under pooled chronological models. RQ3 failed for
-the scalar construct because the adjusted value was $r=0.230<0.30$; only a post-hoc
-continuous profile remained. RQ4 produced boundaries rather than a new mechanism:
-cross-domain history and discrete typology were unsupported, and the separate
-personalization design stopped before modeling. These answers are specific to the
-implemented data, splits, models, and decision rules.
+RQ1 found no detectable passive increment over label history and no moderate shared
+within-trajectory ranking effect; sparse trajectories left subtle heterogeneous and
+individual effects unresolved. Cross-family outcomes still overlapped substantially.
+RQ2 established direct-behavior continuity under pooled chronological models;
+calendar-only performance was weak and simple same-channel history supplied most of
+the lift. RQ3 identified a specification error in global-SD-normalized
+forecastability and retained only a corrected, comparator-relative continuous
+profile as a post-hoc lead. RQ4 found no support for cross-domain improvement or
+discrete typology, while the separate personalization design stopped before model
+fitting.
 
 \section{Implication for passive-sensing target choice}
 
@@ -1076,26 +1285,30 @@ be judged only against chance or another passive model. It should be judged agai
 the person's available label history. A multi-construct dataset should also examine
 whether the target is empirically distinct from related outcomes.
 
-The result does not reject passive sensing for mental-health research. Passive
-features may support monitoring, context, adherence, or carefully designed
-within-person studies. The project shows what must be demonstrated before making a
-state-inference claim.
+Passive features may still support monitoring, context, adherence, or longer
+within-person studies, but a state-inference claim must first demonstrate value over
+the person's available label history.
 
 \section{What forecastability measured}
 
-The scalar audit is the most important correction made during the project. A
-split-half correlation of 0.412 initially looked like a stable new construct. The
-$-0.912$ correlation with behavioral standard deviation showed that low error mostly
-identified low-variance behavior. The residual $r=0.230$ failed the recorded gate.
+The scalar audit identified a specification error. Equation~\ref{eq:forecastability}
+normalized absolute history-model error by a global target standard deviation. Its
+split-half correlation of 0.412 was reproducible under refitting, but the $-0.912$
+association with person-level behavioral standard deviation showed that it mostly
+ranked low-variance trajectories. Reproducibility therefore did not confer construct
+validity.
 
-This is not a failure of the forecasting pipeline. The raw association remained
-under expanding and disjoint refitting. The pipeline measured a reproducible
-quantity, but that quantity was mainly a known one: behavioral variability. The
-scientific task was construct validation, not only reproducibility.
+Equation~\ref{eq:skill} corrects the principal defect by comparing history-model and
+calendar-model errors within the same trajectory, target, and window. This makes it
+appropriate for the narrower question of incremental historical information. It is
+still comparator-dependent, and pooled coefficients measure transferability rather
+than idiographic learnability. Its scalar form also failed stronger sequence
+controls; only the continuous history-benefit profile remains as a post-hoc lead.
 
-Relative history benefit reduced the direct SD coupling, but it remained related to
-entropy and comparator behavior. Its scalar result also failed the stronger sequence
-controls. A ratio score is not automatically a valid trait measure.
+The original H1 rule adds a second lesson. The adjusted estimate of $r=0.230$ with
+95\% CI $[0.049,0.409]$ failed the point-estimate threshold but remained compatible
+with effects on either side of 0.30. Future work should pre-specify an interval-based
+minimum effect or an equivalence/non-inferiority test.
 
 \section{Meaning of the continuous domain profile}
 
@@ -1115,50 +1328,58 @@ Three boundaries are essential:
   external replication.
 \end{enumerate}
 
-Within these boundaries, the profile is a reasonable future research target. It is
-continuous rather than categorical. It appears to use multiscale own-domain history.
-The present analysis does not justify a clinical label or personality interpretation.
+Within these boundaries, the continuous profile is a reasonable replication target
+and appears to use multiscale own-domain history. No clinical or personality label is
+assigned to it.
 
 \section{Negative results as design information}
 
-The project produced several useful negative results. Passive features did not add
-to the prior-label baseline. Cross-domain histories did not improve the behavior
-forecast. Discrete clusters did not replicate
+The project produced several useful negative results. Richer passive context and
+small neural models did not rescue psychological-label prediction. Cross-domain
+histories did not improve the behavior forecast, and the 42-day plus partial-day
+terms added little on average beyond simple recent same-channel history. Discrete clusters did not replicate
 across cohorts. The personalization design did not have sufficient balanced data for
 its required multi-family comparison.
 
-These results prevent unnecessary complexity. They support simple baselines,
-prospective evaluation, continuous profiles, and feasibility checks before model
-fitting. They also show why a report of the full project is more appropriate than a
-paper organized around one positive claim.
+Together, these results favor simple baselines, prospective evaluation, continuous
+profiles, and feasibility checks before model fitting.
+
+\section{Applied baseline lesson}
+
+The GLOBEM analyses and the Android pilot share neither participants, features, nor
+models, but they expose the same evaluation error at different stages of a system.
+The GLOBEM psychological models required comparison with prior labels, and the
+behavior forecasts required temporal comparators; in the single-user pilot in
+\cref{app:android-pilot}, an app-based score ranked adjustment events moderately well
+(AUROC 0.740), yet both tested action policies produced higher error than leaving the
+setting unchanged. Predictive discrimination is insufficient evidence for
+intervention when false actions carry asymmetric cost, so policy evaluation must
+include a no-action baseline. A later saved-model reconstruction on the same phone
+showed exploratory enrichment of observed adjustment events among selected sessions,
+but its day-clustered interval for all-session error improvement included zero
+(\cref{sec:september-volume-followup}).
 
 \section{Project-execution lessons}
 
 \subsection{Strong baselines should be implemented early}
 
-The label-history control materially changed the interpretation of earlier passive
-model scores. It should have been part of the first comparison. For longitudinal
-labels, prior-label and prevalence baselines are not optional diagnostics.
+The label-history control changed how earlier passive scores were interpreted. For
+longitudinal labels, prior-label and prevalence baselines belong in the first test.
 
 \subsection{Construct audits should follow prediction tests}
 
-Prediction performance and temporal reproducibility do not establish that a new
-construct exists. Variance, entropy, missingness, and comparator behavior should be
-tested directly. A later audit is still valuable, but an earlier audit would reduce
-rework.
+Prediction and temporal reproducibility do not validate a new construct. Variance,
+entropy, missingness, and comparator behavior should be tested early.
 
 \subsection{Stopping rules protect follow-up studies}
 
-The personalization audit checked feasibility without examining outcomes. Its
-stopping decision avoided fitting a model to an underpowered or unbalanced target
-set and then redefining the question after seeing results.
+The outcome-blind personalization audit stopped an underpowered, unbalanced design
+before model fitting or post-hoc redefinition of its target set.
 
-\subsection{Status labels reduce overclaiming}
+\subsection{Confirmatory status and multiplicity}
 
-The repository distinguishes internally recorded tests, post-hoc analyses,
-exploratory controls, and analyses stopped before modeling. This
-distinction should remain in the final submission. A low $p$-value in a post-hoc
-analysis does not convert it into a confirmatory result.
+The analyses mix project-specified and post-hoc tests. Post-hoc $p$-values remain
+exploratory, not confirmatory or family-wise error-controlled.
 
 \section{Threats to validity}
 
@@ -1190,13 +1411,11 @@ sensitive to window length and discretization.
 history model and a pooled calendar model. Normalized calendar MAE varied modestly
 across cohorts. The score is not comparator-free.
 
-\textbf{Post-hoc development.} The profile, feature-family, sequence, typology, and
-distress analyses were developed after earlier results. Their thresholds organize
-the exploration but do not provide external confirmation.
-
-\textbf{Uncertainty.} Aggregate behavior means do not have one common confidence
-interval. Some secondary profile tests have only 500 permutations. H3 had limited
-power for small corrected associations.
+\textbf{Post-hoc development and uncertainty.} The profile, feature-family,
+sequence, typology, and distress analyses followed earlier results; their thresholds
+do not confer external confirmation. Aggregate behavior means have no single common
+confidence interval, some secondary profile tests used only 500 permutations, and
+H3 had limited power for small corrected associations.
 
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion}
@@ -1206,25 +1425,38 @@ power for small corrected associations.
 This project gives four direct conclusions.
 
 \begin{enumerate}
-  \item \textbf{Psychological-label validity is the primary result.} In the tested
-  GLOBEM split, prior depression-label history achieved AUROC 0.844. Adding
-  current-day or historical passive features produced 0.840 and 0.841. The passive
-  features did not improve on label-only. Repeated psychological columns also showed
-  substantial overlap.
+  \item \textbf{Screening-label validity is the primary result.} The released target
+  mixes PHQ-4, a year-1 PANAS-derived rule, and an end-term BDI-II observation; it is
+  a screening proxy rather than a diagnosis. It was positive in 45.4\%/47.7\% of
+  chronological train/test rows. Prior positive-label history achieved AUROC 0.844. Adding
+  current-day or historical passive features produced 0.840 and 0.841, with
+  clustered increment intervals that included zero. The primary within-person AUROC
+  was 0.514 (95\% CI $[0.474,0.556]$). The tested passive features therefore had no
+  detectable aggregate or moderate shared within-person increment. The available
+  trajectories had 80\% simulated power near a shared AUROC of 0.56, but remained
+  insufficient for subtle, heterogeneous, or individual effects. Nonredundant
+  psychological construct pairs still showed median absolute correlation 0.590.
 
-  \item \textbf{Direct behavior is prospectively forecastable.} Pooled history-based
-  models achieved mean tomorrow $R^2=0.272$ and AUROC 0.788 across 16 direct targets.
-  This is measurement feasibility for observed behavior.
+  \item \textbf{Direct behavior exhibits prospective persistence.} Calendar-only
+  models had mean tomorrow $R^2=-0.007$ and AUROC 0.544. Recent same-channel history
+  raised these to 0.244 and 0.767, while the complete model reached 0.272 and 0.788.
+  Its medians were $R^2=0.260$ (target range $-0.113$ to 0.637) and AUROC 0.795
+  (range 0.699--0.884). Simple history therefore supplied most forecast value; the
+  result is continuity of observed behavior, not evidence that a rich fingerprint
+  is necessary.
 
-  \item \textbf{Scalar forecastability is not a validated new construct.} Raw
-  forecastability correlated $-0.912$ with behavioral standard deviation. Its
-  adjusted split-half stability was $r=0.230$, below the internally recorded 0.30
-  gate. The scalar claim failed.
+  \item \textbf{The original scalar was mis-specified.} Global-SD-normalized
+  forecastability correlated $-0.912$ with behavioral standard deviation and mainly
+  ranked low-variance trajectories. Its adjusted split-half estimate was $r=0.230$
+  (95\% CI $[0.049,0.409]$), below the project-specified 0.30 point gate. A corrected
+  score compared history-model error with calendar-model error within the same
+  trajectory, target, and window, but remained comparator-dependent.
 
-  \item \textbf{A continuous profile remains only as a post-hoc lead.} The pattern
-  of domain-specific pooled-model history benefit survived the tested controls.
-  Cross-domain coupling and discrete types were unsupported. The profile is not an
-  idiographic model or a stable person-level phenotype.
+  \item \textbf{A continuous corrected profile remains a post-hoc lead.} The pattern
+  of domain-specific relative history benefit survived the tested moment and
+  sequence controls. Cross-domain coupling and discrete types were unsupported. The
+  profile measures pooled-model transferability, not idiographic learnability or a
+  stable cross-year phenotype.
 \end{enumerate}
 
 \section{Recommended replication study}
@@ -1259,69 +1491,331 @@ measurement rule: compare passive models with label history, forecast direct beh
 prospectively, and audit prediction-derived scores against simpler behavioral
 constructs. That rule is the defensible contribution of the work.
 
+Across the project, the resulting baseline hierarchy is: psychological-label models
+must beat label history and behavioral forecasts must beat temporal comparators.
+The separate single-user pilot in \cref{app:android-pilot} illustrates the analogous
+decision-system requirement that an intervention policy must beat no action.
+
 \clearpage
 \bibliographystyle{plainnat}
 \bibliography{references}
 
 \appendix
 
+\chapter{Per-Target Behavioral Forecast Results}
+\label{app:rq2-targets}
+
+The aggregate RQ2 summaries conceal substantial target heterogeneity. For the full
+evening model, tomorrow $R^2$ ranged from $-0.113$ to 0.637 and tomorrow AUROC from
+0.699 to 0.884. \Cref{tab:rq2-per-target} therefore reports every target for both
+horizons. Target names describe released aggregate channels and should not be read
+as psychological constructs.
+
+\input{../results/report_statistical_supplements/rq2_per_target_table.tex}
+
+\chapter{Neural Model-Class Diagnostics}
+\label{app:neural-diagnostics}
+
+Two small neural classifiers were evaluated during model exploration. The cleanest
+model-class diagnostic was a tabular MLP using the same 196 RAPIDS 7/14-day history
+features and outer evaluation splits as the random-forest history baseline. Its
+inner validation respected the outer regime: later rows within each training
+trajectory were used for within-user validation, whereas complete user trajectories
+sampled within institute-year were used for held-out-user validation.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption[Neural model-class diagnostics]{Single-run neural diagnostics and the
+random-forest history comparator. ``Fit/val/test'' reports row counts. Validation
+AUROC is absent for the random forest because it was fitted on the complete outer
+training block. Metrics are shown to three decimals; full-precision outputs are
+retained in the statistical supplement.}
+\label{tab:neural-diagnostics}
+\begin{tabular}{@{}llllrrrr@{}}
+\toprule
+Model & Input & Split & Fit/val/test & \makecell{Val.\\AUROC} &
+\makecell{Test\\AUROC} & \makecell{Macro-\\F1} & \makecell{Bal.\\acc.} \\
+\midrule
+RF & RAPIDS history & Within user & 5,213/--/2,927 & -- & 0.691 & 0.640 & 0.642 \\
+MLP & RAPIDS history & Within user & 4,397/816/2,927 & 0.709 & 0.619 & 0.579 & 0.580 \\
+LSTM & Raw 14-day sequence & Within user & 4,431/782/2,927 & 0.664 & 0.622 & 0.596 & 0.597 \\
+\addlinespace
+RF & RAPIDS history & Held-out users & 6,063/--/2,077 & -- & 0.577 & 0.548 & 0.548 \\
+MLP & RAPIDS history & Held-out users & 5,157/906/2,077 & 0.547 & 0.559 & 0.536 & 0.536 \\
+LSTM & Raw 14-day sequence & Held-out users & 5,153/910/2,077 & 0.698 & 0.553 & 0.541 & 0.542 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The MLP is the matched-input diagnostic, but not an identical-training-exposure
+comparison: it reserved part of the outer-training pool for checkpoint selection,
+whereas the random forest used the complete outer-training block. It trailed the
+random forest by 0.071 AUROC within user and by 0.018 on held-out users. The saved
+LSTM run used 100 all-day sequence features plus their missingness indicators rather
+than the RAPIDS history vector. Its result files also predate the validation-hygiene
+rewrite and contain no retained split-summary artifact, so it is reported only as a
+legacy exploratory baseline, not as a matched or hygienic-validation comparison.
+
+No repeated-seed distribution, neural confidence interval, or systematic
+hyperparameter search was run. The supported conclusion is narrow: the tested small
+MLP did not improve on the random-forest history baseline under the same feature
+representation and outer split. These runs do not establish that neural models are
+generally inferior for passive-sensing data.
+
+\chapter{Independent Android Self-Instrumentation Pilot}
+\label{app:android-pilot}
+
+\section{Scope, collection, and privacy}
+
+As a separate applied work package, the author designed, implemented, and operated
+a custom Android logger on their own phone. It recorded 525 listening sessions over
+37 calendar days, linking generic app identity, output device, time, initial and
+settled media volume, and provenance evidence for matched hardware-key changes. The
+author was both system designer and the sole observed user, so reactivity and
+experimenter-participant coupling are unavoidable. This pilot is not part of the
+GLOBEM research questions, a transfer experiment, or a population study.
+
+Exact app and package identities and raw session logs remain private. The report
+uses generic app references and only aggregate counts, metrics, contracts, and
+de-identified displays. No third-party participant was observed, and no suggestion
+or automatic actuation was enabled.
+
+\section{Frozen evaluation and developmental model}
+
+A protocol activation record froze the eligible collection window and evaluator.
+After pre-activation sessions and sessions with context changes in the evaluation
+window were excluded, 258 sessions remained. The first 180 sessions were used for
+estimation and the final 78 as a future test block; 33 test sessions contained a
+matched hardware-key adjustment.
+
+The developmental two-stage mechanism was formulated after the completed
+prospective block and is therefore post-hoc. Stage one estimated adjustment
+probability from generic app identity using beta-smoothed training rates. Stage two
+used only adjustment-positive sessions and estimated settled volume from
+hierarchical training medians. Its primary specification used device and a
+three-hour time bucket while excluding app identity and current volume. The
+end-to-end policy applied the destination estimate when the stage-one probability
+was at least 0.50 and otherwise retained the current volume. The primary policy
+comparator was no action: always retain the current volume. Paired uncertainty used
+2,000 session-level bootstrap resamples.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{android_pilot_workflow.png}
+\caption[Android self-instrumentation workflow]{Independent Android pilot workflow.
+The author implemented and operated the logger, recorded 525 sessions over 37
+calendar days, froze a provenance-aware eligible window, and evaluated 258 eligible
+sessions chronologically. The pilot is a post-hoc single-user applied work package,
+not a GLOBEM replication or population study.}
+\label{fig:android-workflow}
+\end{figure}
+
+\section{Results}
+
+Generic app identity moderately ranked whether an adjustment occurred in the 78
+future test sessions: AUROC was 0.740, Brier score 0.203, and balanced accuracy
+0.670 at the 0.50 threshold. The threshold produced 31 true positives and two false
+negatives, but also 27 false positives among 45 sessions with no observed
+adjustment, giving specificity 0.400. Ranking performance therefore did not by
+itself establish a useful action rule.
+
+The destination-volume hypothesis failed its developmental decision rule.
+Device and time without app identity had MAE 21.73 on the 33 adjustment-positive
+test sessions, 5.70 points worse than the global median (95\% paired-bootstrap
+interval 2.55 to 8.82). The app-aware sensitivity reached MAE 14.53, but its
+1.50-point difference from the global median had interval $[-4.21,1.50]$ and did
+not meet the recorded 10\% practical-effect rule. Because the paired empirical
+bootstrap resamples only 33 adjusted sessions, its distribution is discrete; the
+upper 97.5th percentile equalling 1.50 is the computed quantile, not a transcription
+error.
+
+\begin{table}[H]
+\centering
+\small
+\caption[Android destination-volume results]{Destination-volume MAE on the 33
+adjustment-positive future test sessions. Lower is better. The app-aware sensitivity
+is not distinguishable from the global median under the paired bootstrap and is not
+reported as a positive signal.}
+\label{tab:android-destination}
+\begin{tabularx}{\textwidth}{@{}Y S[table-format=2.2] L{0.43\textwidth}@{}}
+\toprule
+Estimator & {MAE} & Interpretation \\
+\midrule
+Global adjusted-session median & 16.03 & Constant comparator \\
+App-aware device/time hierarchy & 14.53 & Difference versus median $-1.50$;
+95\% interval $[-4.21,1.50]$; no supported improvement \\
+Keep current volume & 19.12 & No destination estimate \\
+Device and time, app excluded & 21.73 & Primary mechanism failed; paired
+difference from the global median was positive with interval $[2.55,8.82]$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The complete policy was net-negative. Across all 78 sessions, no action had MAE
+8.17, the observed app-aware sensitivity had MAE 13.30, and the proposed
+app-independent policy had MAE 17.69. Relative to no action, paired MAE differences
+were 5.13 points (95\% interval 1.25 to 9.13) and 9.53 points (5.31 to 13.49),
+respectively. On the 45 unchanged sessions, no action had MAE 0.13, whereas the
+app-aware and proposed policies had MAE 11.82 and 14.16. False interventions erased
+the descriptive ranking value.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{android_pilot_policy_cost.png}
+\caption[Android pilot false-intervention cost]{Single-user Android pilot on 78
+future sessions. Panel A shows the app-only adjustment gate at threshold 0.50.
+Panel B isolates the 45 sessions with no matched adjustment: false interventions
+raised MAE sharply relative to retaining the current volume. Panel C shows the same
+ordering end to end. ``App-aware'' is a descriptive sensitivity; ``proposed'' is the
+app-independent device/time destination policy. Exact app identities are omitted.
+Lower MAE is better.}
+\label{fig:android-policy-cost}
+\end{figure}
+
+\section{Interpretation and limitations}
+
+The developmental two-stage mechanism and both observed policies are rejected on
+this block. The useful methodological result is narrower: moderate ranking
+performance can coexist with a harmful action policy when false positives are
+costly. The appropriate comparison for an intervention is therefore not only a
+classifier or destination baseline, but the utility of doing nothing.
+
+This result comes from one author-user over 37 calendar days and 78 future test
+sessions. Hardware-key adjustment is an observed action, not a direct measure of
+preference, satisfaction, or intervention benefit. The mechanism was post-hoc, and
+there is no cross-user, platform, clinical, or deployment evidence. A future study
+would need multiple users, an independently frozen policy, and direct utility or
+preference labels before testing any actuation.
+
+\section{September saved-model follow-up (exploratory)}
+\label{sec:september-volume-followup}
+
+A separately dated follow-up used the same author-user's phone export. The September
+1 file held 541 sessions; the September 15 file retained those rows unchanged and
+added 110 sessions from September 2--15. The saved hybrid CatBoost object contains
+a September 1 training timestamp, a 12-point discrepancy trigger, and a 0.6
+correction weight. Its feature schema uses the initial volume, app, device, time,
+charging/screen state, and immediately preceding-session context. Reconstructing
+its predictions without refitting reproduced the later reported 24 selected
+sessions and outcome metrics. The file was copied into the audit workspace on
+September 15, so the internal timestamp and matching arithmetic do not independently
+prove an immutable pre-September policy freeze.
+
+Across all 110 future sessions, retaining the initial volume had MAE 9.855 and
+RMSE 17.899. The saved hybrid had MAE 9.062 and RMSE 16.122, a paired MAE
+improvement of 0.793 points (8.0\%). A day-clustered bootstrap over 14 dates gave
+a 95\% interval $[-0.175,1.890]$ for the improvement, which includes zero.
+The model changed 24 sessions. Within those sessions, MAE was 17.958 for no action
+and 14.324 for the hybrid; 17 changes reduced absolute error and seven raised it.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{android_september_followup.png}
+\caption[September saved-model volume follow-up]{Later single-user follow-up on
+110 sessions from September 2--15. Panel A compares no action and the saved hybrid;
+the paired MAE improvement interval crosses zero. Panel B shows observed
+hardware-key adjustment rates for selected and unselected sessions. Selection is
+exploratory and post-hoc, not evidence that automatic corrections were preferred.
+Saved-model arithmetic was reproduced, but an immutable pre-September policy freeze
+was not independently verified.}
+\label{fig:android-september}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption[Separate Android policy evaluation blocks]{Separate single-user blocks
+with different policies, not a before/after estimate for one unchanged policy.
+MAE covers every session; lower is better. The September interval crosses zero.}
+\label{tab:android-blocks}
+\begin{tabularx}{\textwidth}{@{}L{0.31\textwidth}S[table-format=2.2]S[table-format=2.2]Y@{}}
+\toprule
+Block and policy & {Keep MAE} & {Policy MAE} & Interpretation \\
+\midrule
+Developmental test: proposed two-stage policy, 78 sessions & 8.17 & 17.69 & Policy harmed overall accuracy; 95\% paired difference versus keep: 5.31--13.49. \\
+September follow-up: saved hybrid, 110 sessions & 9.85 & 9.06 & Observed 0.79-point improvement; day-clustered 95\% interval: $[-0.17,1.89]$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The narrow positive observation is \emph{adjustment-event selection}: 17/24 selected
+sessions had a hardware-key adjustment versus 38/86 unselected (70.8\% versus
+44.2\%; difference 26.6 points, day-clustered 95\% interval 3.9--50.0;
+uncorrected Fisher $p=0.036$). This post-hoc, uncorrected test is exploratory, not
+proof that automatic correction is preferred. Six of seven selected sessions without
+an observed adjustment were worsened. The earlier 78-session policy null remains;
+neither Android result informs GLOBEM psychological labels or population efficacy.
+
 \chapter{Reproducibility and Source Map}
 \label{app:work-packages}
 
 \footnotesize
-\begin{longtable}{@{}L{0.13\textwidth}L{0.30\textwidth}L{0.30\textwidth}L{0.18\textwidth}@{}}
-\caption[Work-package source map]{Compact work-package source map. ``Runnable'' means a runner and checked
-output exist; restricted local GLOBEM inputs are still required where stated.}
+\begin{longtable}{@{}L{0.18\textwidth}L{0.77\textwidth}@{}}
+\caption[Work-package source map]{Compact work-package source map. GLOBEM analyses
+have a runner and checked aggregate output; restricted source data are still
+required for full recomputation. Android entries are aggregate-only. Exact mappings are in the
+submission package's \path{CLAIM_SOURCE_MAP.md}.}
 \label{tab:work-package-sources}\\
 \toprule
-WP / status & Contract or definition; runner & Checked output & Decision represented \\
+Work package & Reproducible record and represented decision \\
 \midrule
 \endfirsthead
-\multicolumn{4}{l}{\textit{Table \thetable\ continued}}\\
+\multicolumn{2}{l}{\textit{Table \thetable\ continued}}\\
 \toprule
-WP / status & Contract or definition; runner & Checked output & Decision represented \\
+Work package & Reproducible record and represented decision \\
 \midrule
 \endhead
 \midrule
-\multicolumn{4}{r}{\textit{Continued on next page}}\\
+\multicolumn{2}{r}{\textit{Continued on next page}}\\
 \endfoot
 \bottomrule
 \endlastfoot
-\shortstack[l]{WP1\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_label_baseline_control.py} &
-\path{results/label_baseline_control/summary.json};
-\path{metrics.csv} & Label-history boundary \\
-\shortstack[l]{WP1\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_construct_fragility_audit.py} &
-\path{results/construct_fragility_audit/summary.json};
-\path{same_day_construct_correlations.csv} & Construct-overlap boundary \\
-\shortstack[l]{WP2\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_behavioural_weather_forecast.py} &
-\path{results/behavioural_weather_forecast/summary.json};
-\path{regression_summary_r2.csv}; \path{classification_summary_auroc.csv} &
-Prospective behavior result \\
-\shortstack[l]{WP3\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_forecastability_phenotype.py} &
-\path{results/forecastability/summary.json} &
-Original scalar/profile test \\
-\shortstack[l]{WP3\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_referee_robustness_checks.py} &
-\path{results/referee_robustness/summary.json};
-\path{stability_robustness.csv}; \path{profile_robustness.csv} & Construct
-correction and refits \\
-\shortstack[l]{WP4\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_structure_mechanism_followup.py};
-\path{experiments/run_profile_typology_followup.py} &
-\path{results/structure_followup/summary.json};
-\path{typology_summary.json} & Post-hoc profile, mechanism, and typology \\
-\shortstack[l]{Secondary\\Runnable} & \path{experiments/README.md};
-\path{experiments/run_common_distress_forecastability.py} &
-\path{results/distress_sensitivity/summary.json} & Post-hoc distress sensitivity \\
-\shortstack[l]{WP5\\Runnable\\audit} & \path{experiments/personalization/contract.md};
-\path{experiments/personalization/run.py} &
-\path{experiments/personalization/result.json};
-\path{experiments/personalization/review.md} & Feasibility stop; no prediction
-model \\
+RQ1 label baseline & Runner:
+\path{experiments/run_label_baseline_control.py}; checked output:
+\path{results/label_baseline_control/summary.json}; target prevalence extract:
+\path{results/report_statistical_supplements/rq1_target_prevalence.csv}.
+Represents the label-history boundary. \\
+RQ1 inference & Runners in \path{experiments/run_rq1_*.py}; checked aggregates in
+\path{results/rq1_clustered_inference}, \path{results/rq1_within_person_deviation},
+\path{results/rq1_within_person_power_diagnostic}, and
+\path{results/rq1_split_seed_sensitivity} represent clustered inference,
+within-person ranking, power, and split/seed sensitivity. \\
+Construct overlap & Runners: \path{experiments/run_construct_fragility_audit.py}
+and \path{experiments/run_construct_overlap_sensitivity.py}; checked outputs:
+\path{results/construct_fragility_audit} and
+\path{results/construct_overlap_sensitivity}. Represents the redundant and
+nonredundant construct-overlap audits. \\
+RQ2 forecasting & Runner: \path{experiments/run_behavioural_weather_forecast.py};
+checked output:
+\path{results/behavioural_weather_forecast}, with the per-target reporting extract
+in \path{results/report_statistical_supplements/rq2_per_target.csv} and the baseline
+hierarchy in \path{results/report_statistical_supplements/rq2_baseline_summary.csv}. \\
+\path{experiments/run_forecastability_phenotype.py}; checked output:
+\path{results/forecastability/summary.json}. Represents
+the original, subsequently rejected scalar operationalization. \\
+RQ3 correction & Runnable:
+\path{experiments/run_referee_robustness_checks.py}; checked output:
+\path{results/referee_robustness}. Represents the construct audit,
+refits, and corrected comparator-relative profile. \\
+RQ4 structure & Runnable:
+\path{experiments/run_structure_mechanism_followup.py} and
+\path{experiments/run_profile_typology_followup.py}; checked output:
+\path{results/structure_followup}. Represents profile mechanism
+and typology follow-ups. \\
+Personalization audit & Runnable feasibility audit:
+\path{experiments/personalization/run.py}; checked output:
+\path{experiments/personalization/result.json}. Represents the outcome-blind
+stop before model fitting. \\
+Android pilot & Privacy-safe aggregate extract:
+\path{results/android_pilot/summary.json}. It verifies the displayed arithmetic and
+figure, not an independent rerun from private phone logs. No deployment claim. \\
+September volume follow-up & Privacy-safe aggregate extract:
+\path{results/android_pilot/september_summary.json}. It represents a later,
+single-user exploratory observation. The saved-model freeze was not independently
+proved and the policy-improvement interval includes zero. Raw exports and predictions
+stay private. \\
 \end{longtable}
 \normalsize
 
@@ -1330,34 +1824,58 @@ model \\
 Excluding all repeat-candidate trajectories retained 232 core trajectories and a
 raw fixed-model correlation of $r=0.417$ with 95\% interval $[0.261,0.562]$. This
 shows that known repeats did not dominate the raw association; it does not validate
-the scalar or reconstruct unique identities. The sequence controls were based on
-short discretized records (median 68 observed days) and remain descriptive. H3 was
-inconclusive because its approximate corrected 80\% minimum detectable $|r|$ was
-0.172. The post-hoc distress estimates were heterogeneous across cohorts and do not
-support distress prediction or within-person change detection.
+the scalar or reconstruct unique identities. In the same exclusion sample, the
+standard-deviation/entropy-adjusted history-benefit profile advantages were 0.338,
+0.333, and 0.242 under fixed, expanding, and disjoint regimes (all $p=0.002$).
+The sequence controls were based on short discretized records (median 68 observed
+days) and remain descriptive. H3 was inconclusive because its approximate corrected
+80\% minimum detectable $|r|$ was 0.172. The post-hoc distress estimates were
+heterogeneous across cohorts and do not support distress prediction or within-person
+change detection.
 
 \section{Canonical build and analysis command}
 
-To validate the public-safe aggregate evidence, run the tests, regenerate all six
-report figures, and compile the PDF, run from the repository root:
+From \texttt{deliverables/tuhh\_project\_report/}:
 
 \begin{verbatim}
-python scripts/reproduce_report.py verify
+python3.11 -m venv .report-venv
+.report-venv/bin/pip install -r requirements-report.txt
+MPLBACKEND=Agg .report-venv/bin/python make_figures.py
+tectonic main.tex
 \end{verbatim}
 
-After obtaining GLOBEM v1.1 under its access terms and placing it under the local
-path documented in \path{DATA_ACCESS.md}, recompute the full analysis with:
+From the repository root:
 
 \begin{verbatim}
-python scripts/reproduce_report.py full
+python3.11 -m venv .analysis-venv
+.analysis-venv/bin/pip install -e .
+.analysis-venv/bin/python scripts/run_rq1_clustered_inference.py
+.analysis-venv/bin/python scripts/run_rq1_within_person_deviation.py
+.analysis-venv/bin/python scripts/run_rq1_within_person_power_diagnostic.py
+.analysis-venv/bin/python scripts/run_rq1_split_seed_sensitivity.py
+.analysis-venv/bin/python scripts/run_construct_overlap_sensitivity.py
+.analysis-venv/bin/python scripts/build_report_statistical_supplements.py
 \end{verbatim}
 
-The full command rebuilds the report-relevant analyses before running the
-same verification. GLOBEM source data are required locally and are not redistributed.
-The exact environment is pinned in \path{requirements-lock.txt}; the data boundary
-and expected local layout are documented in \path{DATA_ACCESS.md}. The full
-headline-claim and display map is maintained in
-\path{report/CLAIM_SOURCE_MAP.md} rather than duplicated
-in the PDF.
+\clearpage
+\chapter*{Declaration of Independent Work}
+\phantomsection
+\addcontentsline{toc}{chapter}{Declaration of Independent Work}
+\thispagestyle{plain}
 
+I hereby declare that I prepared this report independently and used no sources or
+aids other than those identified in the report. All passages, data, and ideas taken
+directly or indirectly from other sources are marked as such and attributed to their
+sources. Any use of AI-assisted tools is disclosed in the Data and Code Availability
+statement. I reviewed the submitted analyses, code, figures, citations, and text and
+accept responsibility for the content of this work.
+
+\vfill
+\noindent
+\begin{tabularx}{\textwidth}{@{}X@{\hspace{2cm}}X@{}}
+\rule{\linewidth}{0.4pt} & \rule{\linewidth}{0.4pt} \\
+Place and date & Signature \\
+\end{tabularx}
+
+\clearpage
 \end{document}

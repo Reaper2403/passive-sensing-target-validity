@@ -1,0 +1,69 @@
+{
+  "contract": "docs/73_rq1_within_person_deviation_contract.md",
+  "eligibility": {
+    "n_all_test_trajectories": 697,
+    "n_informative_trajectories": 295,
+    "n_informative_test_rows": 1295
+  },
+  "n_bootstrap": 10000,
+  "seed": 20260831,
+  "primary_model": "history_raw_plus_prior_label_rate",
+  "primary_decision": "no_detectable_within_person_ranking",
+  "metrics": [
+    {
+      "feature_set": "allday_raw",
+      "n_trajectories": 295,
+      "n_test_rows": 1295,
+      "macro_within_trajectory_auroc": 0.5307250470809793,
+      "ci_low": 0.4909604519774012,
+      "ci_high": 0.5706779661016949,
+      "pair_weighted_auroc": 0.5227272727272727,
+      "decision": "no_detectable_within_person_ranking",
+      "primary": false
+    },
+    {
+      "feature_set": "history_raw",
+      "n_trajectories": 295,
+      "n_test_rows": 1295,
+      "macro_within_trajectory_auroc": 0.5183898305084746,
+      "ci_low": 0.4782860169491525,
+      "ci_high": 0.5586534839924671,
+      "pair_weighted_auroc": 0.5257289879931389,
+      "decision": "no_detectable_within_person_ranking",
+      "primary": false
+    },
+    {
+      "feature_set": "prior_label_rate_only",
+      "n_trajectories": 295,
+      "n_test_rows": 1295,
+      "macro_within_trajectory_auroc": 0.5,
+      "ci_low": 0.5,
+      "ci_high": 0.5,
+      "pair_weighted_auroc": 0.5,
+      "decision": "no_detectable_within_person_ranking",
+      "primary": false
+    },
+    {
+      "feature_set": "allday_raw_plus_prior_label_rate",
+      "n_trajectories": 295,
+      "n_test_rows": 1295,
+      "macro_within_trajectory_auroc": 0.5343032015065914,
+      "ci_low": 0.4939244350282485,
+      "ci_high": 0.575,
+      "pair_weighted_auroc": 0.5270154373927959,
+      "decision": "no_detectable_within_person_ranking",
+      "primary": false
+    },
+    {
+      "feature_set": "history_raw_plus_prior_label_rate",
+      "n_trajectories": 295,
+      "n_test_rows": 1295,
+      "macro_within_trajectory_auroc": 0.5136817325800376,
+      "ci_low": 0.47379425612052734,
+      "ci_high": 0.5558288606403013,
+      "pair_weighted_auroc": 0.5222984562607204,
+      "decision": "no_detectable_within_person_ranking",
+      "primary": true
+    }
+  ]
+}

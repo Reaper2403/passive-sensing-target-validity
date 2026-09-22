@@ -1,0 +1,26 @@
+{
+  "scope": "single-author exploratory Android pilot; aggregate values only",
+  "source": "2026-08-30 phone audit and post-hoc two-stage evaluation",
+  "data": {"n_sessions": 525, "n_calendar_days": 37},
+  "n_eligible": 258,
+  "split": {"n_train": 180, "n_test": 78},
+  "sample": {"n_adjusted_test": 33},
+  "stage_one_app_propensity": {"auc": 0.740},
+  "stage_one_confusion_at_0_5": {
+    "true_negative": 18,
+    "false_positive": 27,
+    "false_negative": 2,
+    "true_positive": 31
+  },
+  "policy_metrics_by_true_adjustment": [
+    {"model": "keep_current", "adjusted": 0, "mae": 0.13},
+    {"model": "observed_app_sensitive", "adjusted": 0, "mae": 11.82},
+    {"model": "observed_two_stage", "adjusted": 0, "mae": 14.16}
+  ],
+  "policy_metrics": [
+    {"model": "keep_current", "mae": 8.17},
+    {"model": "observed_app_sensitive", "mae": 13.30},
+    {"model": "observed_two_stage", "mae": 17.69}
+  ],
+  "interpretation": "Adjustment ranking did not produce a beneficial end-to-end policy. No raw logs or app identities are included."
+}

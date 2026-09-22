@@ -1,55 +1,65 @@
-# Passive Sensing Target Validation in GLOBEM
+# Passive sensing: target validity and behavioral forecasting
 
-This is the compact repository submitted with the TU Hamburg Research Project.
+Compact research-project companion to the **16 September 2026** TU Hamburg report by
+Ashutosh Chatterjee. The [48-page report](report/main.pdf) is the scientific source
+of record. This repository provides its analysis code, privacy-safe aggregate
+evidence, figures, and a claim-to-result index. It is not the exploratory scratchpad.
 
-**[Read the project report](report/main.pdf)**
+## Result in 30 seconds
 
-## Result in one paragraph
+- **RQ1, psychological label:** Passive history reached AUROC 0.691 for the released
+  depression-screening proxy, but prior same-user label rate reached 0.844. Adding
+  passive history did not produce a detectable increment (clustered difference
+  -0.003, 95% CI [-0.013, 0.007]). Within-person AUROC was 0.514.
+- **RQ2, behavior:** Tomorrow's directly observed behavior was forecastable across
+  16 targets (mean R2 0.272 with the full model), but recent same-channel history
+  already reached 0.244. The following-week mean R2 was 0.506 with the full model.
+- **RQ3, fingerprint:** The original scalar forecastability score mostly tracked
+  behavioral steadiness (correlation with own variability -0.912). A corrected
+  continuous history-benefit profile is a **post-hoc replication lead**, not a
+  validated psychological trait.
+- **RQ4, mechanism:** Extra cross-domain history and discrete routine clusters did
+  not clear the reported tests. The personalization analysis stopped at a data
+  feasibility gate before fitting an outcome model.
+- **Android pilot, separate n=1 study:** The first policy lost to keeping current
+  volume (MAE 17.69 versus 8.17). A later 110-session follow-up showed an observed
+  8% improvement for a conservative hybrid, but its day-clustered interval included
+  zero. This is exploratory, not GLOBEM transfer or deployment evidence.
 
-In this GLOBEM analysis, prior depression-label history outperformed passive sensing
-for depression classification (AUROC 0.844 versus 0.840 and 0.841 for the two combined
-models). Direct behavior was a better-supported target: pooled chronological models
-reached mean held-out R2 0.272 and AUROC 0.788 for tomorrow across 16 targets. A
-proposed scalar routine-forecastability score did not survive construct validation;
-it was strongly coupled to behavioral variability (`r = -0.912`), and its adjusted
-stability (`r = 0.230`) failed the recorded 0.30 gate. A narrower continuous profile
-result remained post-hoc, while cross-domain coupling, discrete routine types, and
-the proposed personalization study were unsupported or stopped before modeling.
+## Start here
 
-## Evidence included
-
-| Analysis | Code | Aggregate results |
-|---|---|---|
-| Label-history control | [runner](experiments/run_label_baseline_control.py) | [results](results/label_baseline_control/) |
-| Psychological construct overlap | [runner](experiments/run_construct_fragility_audit.py) | [results](results/construct_fragility_audit/) |
-| Prospective behavior forecast | [runner](experiments/run_behavioural_weather_forecast.py) | [results](results/behavioural_weather_forecast/) |
-| Forecastability construct audit | [initial runner](experiments/run_forecastability_phenotype.py), [robustness runner](experiments/run_referee_robustness_checks.py) | [initial results](results/forecastability/), [robustness results](results/referee_robustness/) |
-| Profile mechanism and typology | [mechanism runner](experiments/run_structure_mechanism_followup.py), [typology runner](experiments/run_profile_typology_followup.py) | [results](results/structure_followup/) |
-| Distress sensitivity analysis | [runner](experiments/run_common_distress_forecastability.py) | [results](results/distress_sensitivity/) |
-| Personalization feasibility stop | [method and runner](experiments/personalization/) | [result](experiments/personalization/result.json) |
-
-The frozen methods and interpretation boundaries are summarized in
-[`experiments/README.md`](experiments/README.md). Every displayed value is mapped to
-an aggregate source in [`report/CLAIM_SOURCE_MAP.md`](report/CLAIM_SOURCE_MAP.md).
-
-## Reproduce
-
-Verify the public aggregate evidence and rebuild the report:
+1. Read [the report](report/main.pdf), especially the abstract, Chapter 5, and
+   Appendix C.
+2. Open the [claim-to-evidence map](report/CLAIM_SOURCE_MAP.md) to locate each
+   reported number in `results/`.
+3. Verify the frozen public evidence:
 
 ```bash
-python -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-lock.txt
 python -m pip install -e .
 python scripts/reproduce_report.py verify
 ```
 
-Recomputing the analyses requires authorized GLOBEM v1.1 access:
+The verify command needs **no GLOBEM data or TeX installation**. To regenerate
+figures and compile the PDF, install Tectonic and run
+`python scripts/reproduce_report.py build`. To recompute GLOBEM analyses from
+licensed data, see [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and
+[DATA_ACCESS.md](DATA_ACCESS.md).
 
-```bash
-python scripts/reproduce_report.py full
-```
+## Small repository map
 
-See [`DATA_ACCESS.md`](DATA_ACCESS.md) and [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
-No GLOBEM source data, participant identifiers, participant-level tables, or
-row-level predictions are included in this repository.
+| Path | Purpose |
+|---|---|
+| `report/` | Final PDF, LaTeX, figures, and claim map |
+| `experiments/` | Report-facing GLOBEM analysis runners |
+| `results/` | Frozen aggregate evidence; no row-level predictions |
+| `src/` | Shared loader and evaluation utilities |
+| `scripts/reproduce_report.py` | Three explicit modes: verify, build, full |
+| `tests/` | Smoke and release-boundary checks |
+
+Restricted GLOBEM files, participant identifiers, private Android logs, and
+session-level predictions are not included. The Android aggregate summaries can
+rebuild the figures, but the private raw-data analysis cannot be independently
+rerun from this public repository. This distinction is intentional.

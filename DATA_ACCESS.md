@@ -6,7 +6,7 @@ This project uses the controlled-access GLOBEM v1.1 release on PhysioNet. Its
 participant-level source files and participant-derived row-level outputs are not
 redistributed. Public reproducibility therefore has two layers:
 
-1. Anyone can inspect the code, contracts, aggregate results, figures, and report,
+1. Anyone can inspect the code, aggregate results, figures, and report,
    and can run the aggregate artifact verification without the dataset.
 2. Authorized users can reproduce the numerical analyses from source after obtaining
    GLOBEM under its Data Use Agreement.

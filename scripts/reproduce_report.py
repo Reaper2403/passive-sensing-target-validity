@@ -25,10 +25,14 @@ def verify() -> None:
     script("scripts/check_markdown_links.py")
     script("scripts/verify_public_artifacts.py")
     run([sys.executable, "-m", "pytest"])
+
+
+def build() -> None:
+    verify()
     script("report/make_figures.py")
     tectonic = shutil.which("tectonic")
     if tectonic is None:
-        raise SystemExit("Tectonic is required to rebuild report/main.pdf")
+        raise SystemExit("Tectonic is required only for build/full, not verify")
     run([tectonic, "main.tex"], cwd=REPORT)
     script("scripts/verify_public_artifacts.py")
 
@@ -38,8 +42,14 @@ def full() -> None:
         "scripts/check_globem_layout.py",
         "scripts/audit_globem.py",
         "experiments/run_label_baseline_control.py",
+        "experiments/run_rq1_clustered_inference.py",
+        "experiments/run_rq1_within_person_deviation.py",
+        "experiments/run_rq1_within_person_power_diagnostic.py",
+        "experiments/run_rq1_split_seed_sensitivity.py",
         "experiments/run_construct_fragility_audit.py",
+        "experiments/run_construct_overlap_sensitivity.py",
         "experiments/run_behavioural_weather_forecast.py",
+        "experiments/build_report_statistical_supplements.py",
         "experiments/run_forecastability_phenotype.py",
         "experiments/run_referee_robustness_checks.py",
         "experiments/run_structure_mechanism_followup.py",
@@ -48,14 +58,14 @@ def full() -> None:
         "experiments/personalization/run.py",
     ]:
         script(relative)
-    verify()
+    build()
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Verify or reproduce the project report")
-    parser.add_argument("mode", choices=("verify", "full"))
+    parser.add_argument("mode", choices=("verify", "build", "full"))
     args = parser.parse_args()
-    verify() if args.mode == "verify" else full()
+    {"verify": verify, "build": build, "full": full}[args.mode]()
 
 
 if __name__ == "__main__":

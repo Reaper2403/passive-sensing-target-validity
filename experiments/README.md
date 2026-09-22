@@ -10,6 +10,10 @@ Five random-forest models compare current-day passive features, passive history,
 same-person prior-label rate, and the two combined variants. The primary comparison
 is held-out AUROC against the label-only baseline. Neither combined model may be
 described as an improvement unless it exceeds that baseline.
+The additional `run_rq1_*` runners estimate trajectory-clustered uncertainty,
+within-person ranking, a power diagnostic, and split/seed sensitivity. Their public
+outputs are aggregate only; full reruns create ignored participant-level
+intermediates.
 
 ## 2. Psychological construct overlap
 
@@ -17,6 +21,8 @@ Ten repeated psychological columns are audited using finite same-day Pearson
 correlations and chronological prior-only ridge models. The analysis tests whether
 apparently different prediction targets substantially overlap or predict one another
 from their own and related prior values.
+`run_construct_overlap_sensitivity.py` removes redundant representations for the
+report's primary cross-family overlap summary.
 
 ## 3. Prospective behavior forecast
 
@@ -24,6 +30,8 @@ Six pooled models forecast 16 directly observed behavioral targets for tomorrow 
 the next seven days. Features use calendar structure, recent history, a 42-day
 fingerprint, and information available by the morning, afternoon, or evening issue
 time. Future observations are excluded from every feature set.
+`build_report_statistical_supplements.py` creates prevalence, robust RQ2 summaries,
+and the per-target LaTeX table after the source analyses have run.
 
 ## 4. Forecastability construct audit
 
@@ -56,3 +64,10 @@ The outcome-blind audit requires an allowed multi-family branch with at least 30
 eligible person-targets in every institute-year and 160 overall. No branch satisfied
 all requirements, so no personalization model, prediction, loss, or outcome
 comparison was run. See `personalization/contract.md`, `result.json`, and `review.md`.
+
+## Separate Android pilot
+
+No private Android runner or raw phone log is published here. The report's Appendix C
+figures are regenerated from privacy-safe aggregate extracts in
+`results/android_pilot/`. This permits arithmetic and visualization checks, not
+independent session-level recomputation.

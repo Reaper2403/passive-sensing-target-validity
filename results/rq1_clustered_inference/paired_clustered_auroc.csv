@@ -1,0 +1,3 @@
+model,baseline,model_auroc,baseline_auroc,delta_auroc,ci_low,ci_high,bootstrap_probability_positive,decision
+allday_raw_plus_prior_label_rate,prior_label_rate_only,0.8403424670353838,0.8444280674172024,-0.004085600381818599,-0.013392977776824735,0.00517950907841772,0.1919,no_detectable_increment
+history_raw_plus_prior_label_rate,prior_label_rate_only,0.8413784309872072,0.8444280674172024,-0.0030496364299952283,-0.013019647239220467,0.007181693820642809,0.28,no_detectable_increment
